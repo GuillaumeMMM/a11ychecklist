@@ -1,0 +1,538 @@
+@import "@guillaumemmm/marquedefabrique/dist/css/variables.css";
+@import "@guillaumemmm/marquedefabrique/dist/css/reset.css";
+@import "@guillaumemmm/marquedefabrique/dist/css/kit.css";
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("./assets/fonts/IBMPlexSans-VariableFont_wdth,wght.woff2") format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("./assets/fonts/IBMPlexSans-Italic-VariableFont_wdth,wght.woff2") format('woff2');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+body {
+    --line-height: 1.5;
+
+    background-color: var(--mdf-color-background-default);
+    min-height: 100vh;
+    font-family: "IBM Plex Sans", "system-ui", "Arial";
+    line-height: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    line-height: var(--line-height);
+    interpolate-size: allow-keywords;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(var(--mdf-color-background-brand-secondary), transparent);
+    position: relative;
+
+    .title {
+        line-height: 1.2;
+        font-size: 3rem;
+        font-weight: 600;
+        text-align: center;
+        max-width: 1200px;
+        padding: 0 1rem;
+    }
+
+    .illustrations {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+        pointer-events: none;
+
+        svg {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+
+        svg:nth-child(1) {
+            top: 0;
+            left: 20%;
+            opacity: 0.3;
+        }
+
+        svg:nth-child(2) {
+            right: 10%;
+            bottom: 0;
+            opacity: 0.5;
+        }
+
+        svg:nth-child(3) {
+            left: 50px;
+            bottom: 0;
+            opacity: 0.4;
+        }
+
+        svg:nth-child(4) {
+            left: 20px;
+            bottom: 50%;
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
+            transform: rotate(10deg);
+        }
+
+        svg:nth-child(5) {
+            right: 50px;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            opacity: 0.3;
+            transform: rotate(60deg);
+        }
+
+        svg:nth-child(6) {
+            right: 10%;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            opacity: 0.5;
+        }
+
+        path,
+        polygon,
+        circle {
+            fill: none;
+            stroke: var(--mdf-color-border-brand-secondary);
+            stroke-width: 2px;
+        }
+
+        feDropShadow {
+            flood-color: var(--mdf-color-border-brand-secondary);
+            flood-opacity: 0.3;
+        }
+
+        .star {
+            path {
+                stroke: var(--mdf-color-border-brand-primary);
+            }
+
+            feDropShadow {
+                flood-color: var(--mdf-color-border-brand-primary);
+            }
+        }
+
+        .cross {
+            polygon {
+                stroke: var(--mdf-color-border-success);
+            }
+
+            feDropShadow {
+                flood-color: var(--mdf-color-border-success);
+            }
+        }
+    }
+}
+
+.intro,
+.checklist,
+.annex,
+.progress {
+    width: 100%;
+    max-width: 700px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.intro {
+
+    p+p {
+        margin-top: 1rem;
+    }
+}
+
+.annex {
+    margin-top: 0;
+
+    &>div>*:not(h2) {
+        margin-top: 0.5rem;
+    }
+
+    table {
+        margin: 0.5rem 0;
+    }
+
+    .mdf-table {
+        box-shadow: 0 1px 2px var(--mdf-color-transparent-300);
+
+        .mdf-th,
+        :nth-child(even)>.mdf-td {
+            background-color: var(--mdf-color-background-default);
+        }
+    }
+}
+
+.progress {
+    margin-bottom: 0;
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--mdf-color-text-muted);
+    }
+
+    progress {
+        appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        width: 100%;
+
+        &::-webkit-progress-bar {
+            background-color: var(--mdf-color-border-muted);
+            height: 7px;
+            border-radius: 2px;
+        }
+
+        &::-webkit-progress-value {
+            background-color: var(--mdf-color-border-brand-secondary);
+            border-radius: 2px;
+            transition: width 0.15s ease-in-out, background-color 0.15s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            &::-webkit-progress-value {
+                transition: none;
+            }
+        }
+
+        &::-moz-progress-bar {
+            background-color: var(--mdf-color-border-brand-secondary);
+            border-radius: 2px;
+        }
+
+        &.complete {
+            &::-webkit-progress-value {
+                background-color: var(--mdf-color-border-success);
+            }
+
+            &::-moz-progress-bar {
+                background-color: var(--mdf-color-border-success);
+            }
+        }
+    }
+}
+
+.mdf-title2,
+.mdf-title3,
+.mdf-title4,
+.mdf-title5 {
+    font-weight: 500;
+}
+
+.mdf-title2 {
+    font-size: 7rem;
+}
+
+.mdf-title3 {
+    font-size: 1.4rem;
+}
+
+.mdf-title4 {
+    font-size: 1.3rem;
+}
+
+.mdf-link {
+    border-radius: 3px;
+}
+
+.mdf-badge {
+    border-radius: 3px;
+}
+
+.mdf-highlighted {
+    font-weight: 600;
+}
+
+.mdf-kbd {
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid var(--mdf-color-border-default);
+    background-color: var(--mdf-color-background-subtle);
+    font-weight: 500;
+    font-family: monospace;
+}
+
+.mdf-code-block {
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid var(--mdf-color-border-muted);
+}
+
+.code-block-container {
+    position: relative;
+}
+
+.copy-code {
+    background: var(--mdf-color-background-muted);
+    box-shadow: 2px 2px 0px rgb(from var(--mdf-color-border-default) r g b / calc(alpha - 0.6));
+    border: 1px solid var(--mdf-color-border-default);
+    font-weight: inherit;
+    font-size: 0.8rem;
+    padding: 3px 5px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+
+    &:hover {
+        background: var(--mdf-color-background-default);
+        box-shadow: 0px 0px 0px rgb(from var(--mdf-color-border-default) r g b / calc(alpha - 0.6));
+    }
+}
+
+a.mdf-badge {
+    background: var(--mdf-color-background-muted);
+    border: 1px solid var(--mdf-color-border-default);
+    box-shadow: none;
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover {
+        background: var(--mdf-color-background-default);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--mdf-color-outline-default);
+        outline-offset: 3px;
+    }
+}
+
+.checklist {
+
+    &>ul>li {
+        display: flex;
+        position: relative;
+        border: 1px solid var(--mdf-color-text-muted);
+        border-radius: 3px;
+
+        &+li {
+            margin-top: 1rem;
+        }
+
+        &:has(summary:hover) {
+            background-color: var(--mdf-color-background-muted);
+        }
+
+        .checkbox-container {
+            padding: 1.5rem;
+
+            .checkbox {
+                position: relative;
+                display: flex;
+                align-items: center;
+
+                input[type="checkbox"] {
+                    width: calc(1.4rem * var(--line-height));
+                    height: calc(1.4rem * var(--line-height));
+                    border-radius: 3px;
+                    border: 1px solid var(--mdf-color-text-muted);
+                    background-color: var(--mdf-color-background-default);
+
+                    &:hover {
+                        background-color: var(--mdf-color-background-muted);
+                    }
+                }
+
+                &:has(input:checked) {
+                    .mdf-checkbox-field:before {
+                        display: none;
+                    }
+
+                    .checkbox-tick {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 100%;
+                        width: 100%;
+                        pointer-events: none;
+                        stroke-dasharray: 1;
+                        stroke-dashoffset: 1;
+                        animation: draw-tick 0.15s ease forwards;
+                    }
+
+                    @media (prefers-reduced-motion: reduce) {
+                        .checkbox-tick {
+                            stroke-dashoffset: 0;
+                            animation: none;
+                        }
+                    }
+                }
+
+                &:not(:has(input:checked)) {
+                    .checkbox-tick {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .references {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section>*+* {
+            margin-top: 0.5rem;
+        }
+
+        .section+.section {
+            margin-top: 1.5rem;
+        }
+    }
+
+    summary {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        padding-left: 0;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--mdf-color-outline-default);
+            border-radius: 5px;
+            outline-offset: 3px;
+        }
+
+        &>h2 {
+            flex: 1;
+        }
+
+        &::marker {
+            content: "";
+        }
+
+        .arrow path {
+            fill: var(--mdf-color-text-muted);
+            d: path("M 12.1048 16.2193 L 21.7588 6.5653 L 23.631 8.4374 L 12.1048 19.9634 L 0.5788 8.4374 L 2.451 6.5653 L 12.1048 16.2193 Z");
+            transition: d 0.15s ease-in-out;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .arrow path {
+                transition: none;
+            }
+        }
+    }
+
+    details {
+        flex: 1;
+        height: 0;
+        min-height: fit-content;
+        transition: height 0.15s ease-in-out;
+
+        .details-content {
+            padding: 0 1.5rem 1.5rem 0;
+        }
+    }
+
+    details[open] {
+        height: auto;
+
+        &>summary .arrow path {
+            d: path("M 11.8952 7.7807 L 2.2412 17.4347 L 0.369 15.5626 L 11.8952 4.0366 L 23.4212 15.5626 L 21.549 17.4347 L 11.8952 7.7807 Z");
+        }
+    }
+}
+
+@keyframes draw-tick {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media (max-height: 30rem) {
+    .illustrations {
+        display: none;
+    }
+}
+
+@media (max-width: 50rem) {
+    .illustrations {
+        display: none;
+    }
+
+    .intro {
+        margin-top: 0;
+    }
+
+    .header {
+        min-height: 30vh;
+    }
+
+    .header .title {
+        font-size: 2.5rem;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 30rem) {
+    .header {
+        min-height: 20vh;
+    }
+
+    .header .title {
+        font-size: 1.5rem;
+    }
+
+    .intro,
+    .checklist,
+    .annex,
+    .progress {
+        padding: 0 10px;
+    }
+
+    .mdf-title3 {
+        font-size: 1rem;
+    }
+
+    .checklist {
+        &>ul>li .checkbox-container {
+            padding: 1rem;
+        }
+    }
+
+    .checklist {
+        & details {
+            .details-content {
+                padding: 0 0.5rem 0.5rem 0;
+            }
+        }
+    }
+
+    .checklist summary {
+
+        padding: 1rem;
+    }
+}
