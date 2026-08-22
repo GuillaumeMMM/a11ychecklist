@@ -26,6 +26,10 @@ for (const container of checkboxContainers) {
 
 const copyButton = document.getElementById('copy-code')
 
+if (!window.isSecureContext) {
+    copyButton.style.display = 'none';
+}
+
 copyButton.addEventListener('click', (e) => {
     navigator.clipboard.writeText(`(function () {
     const elements = document.querySelectorAll('*');
