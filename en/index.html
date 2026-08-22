@@ -1,72 +1,69 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/styles.css" />
-    <title>Checklist accessibilité RGAA WCAG</title>
+    <link rel="stylesheet" href="../src/styles.css" />
+    <title>Accessibility checklist WCAG</title>
     <meta
       name="description"
-      content="Checklist d'accessibilité (a11y) pour améliorer l'accessibilité, et améliorer la conformité des sites webs et applications web aux référentiels RGAA et WCAG."
+      content="Accessibility checklist (a11y) for improving accessibility, and conformity to a11y guidelines (WCAG)."
     />
-    <link rel="icon" type="image" href="/src/assets/favicon.ico" />
-    <script src="./src/script.js" type="module" defer></script>
+    <link rel="icon" type="image" href="../src/assets/favicon.ico" />
+    <script src="../src/script.js" type="module" defer></script>
     <link
       rel="stylesheet"
-      href="./node_modules/microlighter/dist/themes/github.css"
+      href="../node_modules/microlighter/dist/themes/github.css"
       defer
     />
     <script
       type="module"
-      src="./node_modules/microlighter/dist/microlighter.min.js"
+      src="../node_modules/microlighter/dist/microlighter.min.js"
       defer
     ></script>
   </head>
   <body data-syntax-theme="github">
     <main>
-      {{> header title="Checklist d'accessibilité web"}}
+      {{> header title="Web accessibility checklist"}}
       <div class="intro">
         <p>
-          Cette checklist propose aux équipes produit (designers, PMs, QAs,
-          leads, développeurs)
-          <span class="mdf-highlighted">une approche pratique</span> pour
-          <span class="mdf-highlighted">améliorer l'accessibilité</span> des
-          sites web et applications, basée sur les référentiels
-          <a class="mdf-link" href="https://accessibilite.numerique.gouv.fr/"
-            >RGAA 4.1</a
+          This checklist is for web product teams (designers, PMs, QAs, leads
+          devs) who need a
+          <span class="mdf-highlighted"
+            >practical approach to accessibility testing</span
           >
-          et
+          based on
           <a
-            href="https://www.w3.org/WAI/standards-guidelines/wcag/fr"
+            href="https://www.w3.org/WAI/standards-guidelines/wcag"
             class="mdf-link"
             >WCAG 2.2</a
-          >.
-        </p>
-        <p>
-          Cette liste a été établie à partir
-          <span class="mdf-highlighted"
-            >d'erreurs d'accessibilité couramment introduites dans les mises en
-            production de nouvelles fonctionnalités</span
-          >. Par conséquent, elle ne garantit ni l'accessibilité des interfaces
-          ni la conformité aux normes. Elle ne couvre pas tout le RGAA ni toutes
-          les WCAG. Elle ne porte volontairement pas sur les considérations
-          d'accessibilité de la structure de la page (langue de la page,
-          skiplinks, landmarks, etc.) et n'intègre pas l'accessibilité des
-          medias temporels.
-        </p>
-        <p>
-          Cette liste n'a <em class="mdf-highlighted">pas</em> été rédigée par
-          une IA générative. Elle a été construite à partir de plusieurs
-          d'années d'expérience de travail sur l'accessibilité de produits
-          numériques, n'hésitez pas à suggérer des modifications
-          <a href="mailto:guillaume.meigniez@proton.me" class="mdf-link"
-            >par email</a
           >
-          ou
+          (Web Content Accessibility Guidelines).
+        </p>
+        <p>
+          This checklist is based on
+          <span class="mdf-highlighted"
+            >common accessibility mistakes made in modern web product
+            releases</span
+          >. As such, it does not guarantee complete accessibility of the
+          interfaces, nor does it ensure conformity to the guidelines. It does
+          not cover everything in the WCAG, and voluntarly eludes the page
+          structure (page language, skiplinks, landmarks, etc.) and temporal
+          media.
+        </p>
+        <p>
+          This checklist was <em class="mdf-highlighted">not</em> written by a
+          generative AI. It was established after years of working in the web
+          app industry, interacting with product teams. You can suggest
+          modifications
+          <a href="mailto:guillaume.meigniez@proton.me" class="mdf-link"
+            >by email</a
+          >
+          or
           <a
             href="https://github.com/GuillaumeMMM/a11ychecklist/pulls"
             class="mdf-link"
-            >sur github</a
+            >on github</a
           >.
         </p>
       </div>

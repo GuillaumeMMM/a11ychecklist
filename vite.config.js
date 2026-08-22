@@ -9,4 +9,12 @@ export default defineConfig({
             partialDirectory: resolve(__dirname, 'src/components'),
         })
     ],
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                en: resolve(__dirname, 'en/index.html'),
+            },
+        },
+    },
 });
