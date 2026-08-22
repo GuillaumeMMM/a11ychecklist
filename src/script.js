@@ -19,11 +19,6 @@ if (isLSAvailable) {
     }
 }
 
-for (const container of checkboxContainers) {
-    const checkboxTitle = document.getElementById(container.querySelector('.checkbox > input').getAttribute('aria-labelledby'));
-    container.querySelector('.checkbox').style.minHeight = `${checkboxTitle.getBoundingClientRect().height}px`;
-}
-
 const copyButton = document.getElementById('copy-code')
 
 if (!window.isSecureContext) {

@@ -28,7 +28,6 @@ body {
     display: flex;
     flex-direction: column;
     line-height: var(--line-height);
-    interpolate-size: allow-keywords;
 }
 
 main {
@@ -329,7 +328,8 @@ a.mdf-badge {
 .checklist {
 
     &>ul>li {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto 1fr;
         position: relative;
         border: 1px solid var(--mdf-color-text-muted);
         border-radius: 3px;
@@ -344,6 +344,10 @@ a.mdf-badge {
 
         .checkbox-container {
             padding: 1.5rem;
+            grid-column: 1;
+            grid-row: 1;
+            display: flex;
+            align-items: center;
 
             .checkbox {
                 position: relative;
@@ -412,12 +416,15 @@ a.mdf-badge {
     }
 
     summary {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
         padding: 1.5rem;
         padding-left: 0;
         cursor: pointer;
+
+        .summary-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
         &:focus-visible {
             outline: 2px solid var(--mdf-color-outline-default);
@@ -431,6 +438,10 @@ a.mdf-badge {
 
         &::marker {
             content: "";
+        }
+
+        .arrow {
+            flex-shrink: 0;
         }
 
         .arrow path {
@@ -447,18 +458,20 @@ a.mdf-badge {
     }
 
     details {
-        flex: 1;
-        height: 0;
-        min-height: fit-content;
-        transition: height 0.15s ease-in-out;
+        grid-column: 2;
+        grid-row: 1 / 3;
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-template-columns: subgrid;
 
         .details-content {
             padding: 0 1.5rem 1.5rem 0;
+            grid-row: 2 / 3;
+            grid-column: 1 / 3;
         }
     }
 
     details[open] {
-        height: auto;
 
         &>summary .arrow path {
             d: path("M 11.8952 7.7807 L 2.2412 17.4347 L 0.369 15.5626 L 11.8952 4.0366 L 23.4212 15.5626 L 21.549 17.4347 L 11.8952 7.7807 Z");
@@ -532,7 +545,7 @@ a.mdf-badge {
     }
 
     .checklist summary {
-
         padding: 1rem;
+        padding-left: 0;
     }
 }

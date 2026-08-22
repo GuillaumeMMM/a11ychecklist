@@ -9,13 +9,15 @@
 </div>
 <details>
   <summary>
-    <h2 class="mdf-title3" id="rule-{{#> id}}{{/id}}">
-      {{#> id}}{{/id}}. {{#> title}}{{/title}}
-    </h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" class="arrow">
-      <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
-        d="M 12.1048 16.2193 L 21.7588 6.5653 L 23.631 8.4374 L 12.1048 19.9634 L 0.5788 8.4374 L 2.451 6.5653 L 12.1048 16.2193 Z" />
-    </svg>
+    <div class="summary-content">
+      <h2 class="mdf-title3" id="rule-{{#> id}}{{/id}}">
+        {{#> id}}{{/id}}. {{#> title}}{{/title}}
+      </h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1rem" height="1rem" viewBox="0 0 24 24" fill="none" class="arrow">
+        <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor"
+          d="M 12.1048 16.2193 L 21.7588 6.5653 L 23.631 8.4374 L 12.1048 19.9634 L 0.5788 8.4374 L 2.451 6.5653 L 12.1048 16.2193 Z" />
+      </svg>
+    </div>
   </summary>
   <div class="details-content">
     {{#> rules}}{{/rules}}
