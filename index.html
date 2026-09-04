@@ -25,594 +25,604 @@
   <body data-syntax-theme="github">
     <main>
       {{> header}}
-      <div class="intro">
-        <p>
-          Cette checklist propose aux équipes produit (designers, PMs, QAs,
-          leads, développeurs)
-          <span class="mdf-highlighted">une approche pratique</span> pour
-          <span class="mdf-highlighted">améliorer l'accessibilité</span> des
-          sites web et applications, basée sur les référentiels
-          <a class="mdf-link" href="https://accessibilite.numerique.gouv.fr/"
-            >RGAA 4.1</a
+      <div class="content">
+        <div class="intro">
+          <p>
+            Cette checklist propose aux équipes produit (designers, PMs, QAs,
+            leads, développeurs)
+            <span class="mdf-highlighted">une approche pratique</span> pour
+            <span class="mdf-highlighted">améliorer l'accessibilité</span> des
+            sites web et applications, basée sur les référentiels
+            <a class="mdf-link" href="https://accessibilite.numerique.gouv.fr/"
+              >RGAA 4.1</a
+            >
+            et
+            <a
+              href="https://www.w3.org/WAI/standards-guidelines/wcag/fr"
+              class="mdf-link"
+              >WCAG 2.2</a
+            >.
+          </p>
+          <p>
+            Pour autant cette liste ne garantit ni l'accessibilité des
+            interfaces ni la conformité aux normes. Elle ne couvre pas tout le
+            RGAA ni toutes les WCAG. Elle a été établie à partir
+            <span class="mdf-highlighted"
+              >d'erreurs d'accessibilité couramment introduites dans les mises
+              en production de nouvelles fonctionnalités</span
+            >. Elle ne porte volontairement pas sur les considérations
+            d'accessibilité de la structure de la page (langue de la page,
+            skiplinks, landmarks, etc.) et n'intègre pas l'accessibilité des
+            medias temporels.
+          </p>
+          <p>
+            Cette liste n'a <em class="mdf-highlighted">pas</em> été rédigée par
+            une IA générative. Elle a été construite à partir de plusieurs
+            d'années d'expérience de travail sur l'accessibilité de produits
+            numériques, n'hésitez pas à suggérer des modifications
+            <a href="mailto:guillaume.meigniez@proton.me" class="mdf-link"
+              >par email</a
+            >
+            ou
+            <a
+              href="https://github.com/GuillaumeMMM/a11ychecklist/pulls"
+              class="mdf-link"
+              >sur github</a
+            >.
+          </p>
+        </div>
+        <div class="progress only-js">
+          <label for="progression"
+            ><span>Progression</span
+            ><span id="progression-value">0%</span></label
           >
-          et
-          <a
-            href="https://www.w3.org/WAI/standards-guidelines/wcag/fr"
-            class="mdf-link"
-            >WCAG 2.2</a
-          >.
-        </p>
-        <p>
-          Pour autant cette liste ne garantit ni l'accessibilité des interfaces
-          ni la conformité aux normes. Elle ne couvre pas tout le RGAA ni toutes
-          les WCAG. Elle a été établie à partir
-          <span class="mdf-highlighted"
-            >d'erreurs d'accessibilité couramment introduites dans les mises en
-            production de nouvelles fonctionnalités</span
-          >. Elle ne porte volontairement pas sur les considérations
-          d'accessibilité de la structure de la page (langue de la page,
-          skiplinks, landmarks, etc.) et n'intègre pas l'accessibilité des
-          medias temporels.
-        </p>
-        <p>
-          Cette liste n'a <em class="mdf-highlighted">pas</em> été rédigée par
-          une IA générative. Elle a été construite à partir de plusieurs
-          d'années d'expérience de travail sur l'accessibilité de produits
-          numériques, n'hésitez pas à suggérer des modifications
-          <a href="mailto:guillaume.meigniez@proton.me" class="mdf-link"
-            >par email</a
-          >
-          ou
-          <a
-            href="https://github.com/GuillaumeMMM/a11ychecklist/pulls"
-            class="mdf-link"
-            >sur github</a
-          >.
-        </p>
-      </div>
-      <div class="progress only-js">
-        <label for="progression"
-          ><span>Progression</span><span id="progression-value">0%</span></label
-        >
 
-        <progress id="progression" max="100" value="0"></progress>
-      </div>
-      <div class="checklist">
-        <ul>
-          <!-- RULE 1 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}1{{/inline}} {{#*inline "title"}}
-            Le contraste entre la couleur du texte et la couleur de
-            l'arrière-plan est suffisamment élevé {{/inline}} {{#* inline
-            "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.2"
-                  class="mdf-badge"
-                  >RGAA #3.2</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.3"
-                  class="mdf-badge"
-                  >RGAA #3.3</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Si le contraste n'est pas suffisamment élevé, le texte est
-              difficile à lire.
-            </p>
-            <p>
-              Cette règle s'applique aussi aux composants d'interface non
-              textuels qui sont porteurs d'information (par exemple une pastille
-              d'alerte ou le SVG de l'icône ouvrant le menu).
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Utiliser un vérificateur de contrastes en ligne comme celui de
-              <a
-                href="https://coolors.co/contrast-checker/112a46-acc8e5"
-                class="mdf-link"
-                >coolors</a
-              >, utiliser un
-              <a
-                href="https://cssauthor.com/best-figma-contrast-checker-plugins/"
-                class="mdf-link"
-                >plugin Figma</a
-              >
-              ou utiliser une extension web comme
-              <a
-                href="https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf"
-                class="mdf-link"
-                >WCAG color contrast checker</a
-              >
-              qui vérifie toute la page d'un coup.
-            </p>
-            <div>
-              <span>Le contraste du texte est valide lorsque&nbsp;:</span>
-              <ul class="mdf-list">
+          <progress id="progression" max="100" value="0"></progress>
+        </div>
+        <div class="checklist">
+          <ul>
+            <!-- RULE 1 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}1{{/inline}} {{#*inline "title"}}
+              Le contraste entre la couleur du texte et la couleur de
+              l'arrière-plan est suffisamment élevé {{/inline}} {{#* inline
+              "rules"}}
+              <ul class="references">
                 <li>
-                  Soit le texte est < 24px et le contraste est supérieur ou égal
-                  à 4,5:1
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.2"
+                    class="mdf-badge"
+                    >RGAA #3.2</a
+                  >
                 </li>
                 <li>
-                  Soit le texte est >= 24px et le contraste est supérieur ou
-                  égal à 3:1
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.3"
+                    class="mdf-badge"
+                    >RGAA #3.3</a
+                  >
                 </li>
               </ul>
-            </div>
-            <div>
-              <span
-                >Le contraste du composant d'interface est valide lorsque
-                &nbsp;:</span
-              >
-              <ul class="mdf-list">
-                <li>
-                  Le composant d'interface a un contraste supérieur ou égal à
-                  3:1 avec son arrière-plan
-                </li>
-              </ul>
-            </div>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Calcul du contraste trop rigide</h4>
-              <span
-                >Le contraste est calculé de la
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Si le contraste n'est pas suffisamment élevé, le texte est
+                difficile à lire.
+              </p>
+              <p>
+                Cette règle s'applique aussi aux composants d'interface non
+                textuels qui sont porteurs d'information (par exemple une
+                pastille d'alerte ou le SVG de l'icône ouvrant le menu).
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Utiliser un vérificateur de contrastes en ligne comme celui de
                 <a
+                  href="https://coolors.co/contrast-checker/112a46-acc8e5"
                   class="mdf-link"
-                  href="https://accessibilite.numerique.gouv.fr/methode/glossaire/#contraste/"
-                  >manière suivante</a
+                  >coolors</a
+                >, utiliser un
+                <a
+                  href="https://cssauthor.com/best-figma-contrast-checker-plugins/"
+                  class="mdf-link"
+                  >plugin Figma</a
                 >
-                &nbsp;:</span
-              >
-              <div class="mdf-quote">
-                <blockquote
-                  cite="https://accessibilite.numerique.gouv.fr/methode/glossaire/#contraste/"
+                ou utiliser une extension web comme
+                <a
+                  href="https://chromewebstore.google.com/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf"
+                  class="mdf-link"
+                  >WCAG color contrast checker</a
                 >
-                  [...] Le rapport de contraste est basé sur la différence de
-                  luminance relative entre l’arrière-plan et le premier plan
-                  selon la règle&nbsp;: (L1 + 0,05) / (L2 + 0,05) où L1 est la
-                  luminance relative la plus claire et L2 la luminance relative
-                  la plus sombre.
-                </blockquote>
+                qui vérifie toute la page d'un coup.
+              </p>
+              <div>
+                <span>Le contraste du texte est valide lorsque&nbsp;:</span>
+                <ul class="mdf-list">
+                  <li>
+                    Soit le texte est < 24px et le contraste est supérieur ou
+                    égal à 4,5:1
+                  </li>
+                  <li>
+                    Soit le texte est >= 24px et le contraste est supérieur ou
+                    égal à 3:1
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <span
+                  >Le contraste du composant d'interface est valide lorsque
+                  &nbsp;:</span
+                >
+                <ul class="mdf-list">
+                  <li>
+                    Le composant d'interface a un contraste supérieur ou égal à
+                    3:1 avec son arrière-plan
+                  </li>
+                </ul>
+              </div>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Calcul du contraste trop rigide</h4>
+                <span
+                  >Le contraste est calculé de la
+                  <a
+                    class="mdf-link"
+                    href="https://accessibilite.numerique.gouv.fr/methode/glossaire/#contraste/"
+                    >manière suivante</a
+                  >
+                  &nbsp;:</span
+                >
+                <div class="mdf-quote">
+                  <blockquote
+                    cite="https://accessibilite.numerique.gouv.fr/methode/glossaire/#contraste/"
+                  >
+                    [...] Le rapport de contraste est basé sur la différence de
+                    luminance relative entre l’arrière-plan et le premier plan
+                    selon la règle&nbsp;: (L1 + 0,05) / (L2 + 0,05) où L1 est la
+                    luminance relative la plus claire et L2 la luminance
+                    relative la plus sombre.
+                  </blockquote>
+                </div>
+                <p>
+                  Le calcul du contraste est donc une opération linéaire entre
+                  les deux couleurs en jeu. C'est une simplification qui ne
+                  correspond pas à la perception des contrastes par l'œil
+                  humain. Par conséquent, certaines combinaisons de couleurs qui
+                  sont conformes au critère de contraste sont quand même
+                  illisibles.
+                </p>
+                <p>
+                  D'autres algorithmes existent pour essayer de coller à la
+                  perception humaine (<a
+                    class="mdf-link"
+                    href="https://adrianroselli.com/2026/04/wcag3-contrast-as-of-april-2026.html"
+                    >APCA étant le plus débattu en ligne</a
+                  >), et les WCAG 3 pourraient modifier la manière de calculer
+                  le contraste.
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">État du web</h4>
+                <p>
+                  <a
+                    class="mdf-link"
+                    href="https://webaim.org/projects/million/#contrast"
+                    >D'après WebAIM</a
+                  >
+                  qui étudie les non-conformités sur des millions de sites tous
+                  les ans, en 2026 83,9% des pages d'accueil des sites vérifiés
+                  échouaient à avoir un contraste suffisant entre le texte et
+                  l'arrière-plan.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 2 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}2{{/inline}} {{#*inline
+              "title"}}Aucune information n'est donnée uniquement par la
+              couleur{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.1"
+                    class="mdf-badge"
+                    >RGAA #3.1</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Si la couleur est la seule source d'information, les personnes
+                ayant du mal à différencier certaines couleurs risquent de
+                manquer cette information.
+              </p>
+              <p>
+                C'est par exemple le cas pour un champ de formulaire dont la
+                bordure devient rouge (et rien d'autre) quand il est en erreur,
+                ou pour les courbes d'un graphique qui sont uniquement
+                différentiables par leur couleur.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Passer l'écran en mode noir et blanc (sur Mac activer le filtre
+                des couleurs dans les options d'accessibilité). Ou installer
+                l'extension
+                <a
+                  href="https://chromewebstore.google.com/detail/colorblindly/floniaahmccleoclneebhhmnjgdfijgg"
+                  class="mdf-link"
+                  >colorblindly</a
+                >
+                avec l'option "Monochromacy". Puis vérifier que les éléments
+                d'interface sont toujours visibles et compréhensibles.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">
+                  Information critique vs information secondaire
+                </h4>
+                <p>
+                  La signification de "information" est sujette à
+                  interprétation. Par exemple, un lien bleu qui devient violet
+                  quand il a déjà été visité ne constitue pas une non
+                  conformité, même si rien d'autre que la couleur n'indique le
+                  changement d'état.
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">Contraste suffisant</h4>
+                <p>
+                  Même si la couleur est la seule source d'information mais que
+                  le contraste est suffisamment élevé, on peut parfois
+                  considérer le critère conforme (à interpréter au cas par cas
+                  en testant l'interface en noir et blanc. Dans le doute il vaut
+                  mieux toujours prévoir une autre différentiation que la
+                  couleur ou le contraste).
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">Daltonisme</h4>
+                <p>
+                  À l'échelle mondiale,
+                  <a
+                    href="https://fr.wikipedia.org/wiki/Daltonisme"
+                    class="mdf-link"
+                    >5 à 10% des personnes</a
+                  >
+                  sont affectées par une forme de daltonisme.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 3 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}3{{/inline}} {{#*inline
+              "title"}}La hiérarchie des titres est pertinente visuellement et
+              cohérente techniquement{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#9.1"
+                    class="mdf-badge"
+                    >RGAA #9.1</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Avoir une hiérarchie des titres pertinente visuellement
+                (comprendre titre principal de la page, sous-titres, titres de
+                sections, etc.) permet aux utilisateur·rices de se repérer plus
+                facilement dans la page.
+              </p>
+              <p>
+                Avoir une hiérarchie des titres cohérente techniquement
+                (comprendre ordre d'apparition dans le
+                <a
+                  href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model"
+                  class="mdf-link"
+                  >DOM</a
+                >
+                des balises <code class="mdf-code-inline">h1</code>,
+                <code class="mdf-code-inline">h2</code>, etc.) permet aux
+                utilisateur·rices de technologies d'assistance (par exemple de
+                lecteurs d'écran) de comprendre rapidement le contenu d'une
+                page, et de naviguer simplement vers une section en particulier.
+              </p>
+
+              <p>
+                Enfin, si un texte a un style CSS de titre (par exemple un nom
+                de section mis en avant par rapport au corps de texte), il doit
+                être contenu dans une balise de titre HTML, pour que les
+                personnes utilisant des technologies d'assistance puissent
+                accéder rapidement à cette section.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Pour être pertinents, les titres doivent d'abord avoir un
+                contenu textuel unique et explicite, pour qu'une personne
+                naviguant au lecteur d'écran puisse aller vers la bonne section
+                avec certitude.
+              </p>
+              <p>
+                Les balises <code class="mdf-code-inline">h1</code>,
+                <code class="mdf-code-inline">h2</code>, etc. doivent respecter
+                la hiérarchie <code class="mdf-code-inline">h1</code> >
+                <code class="mdf-code-inline">h2</code> >
+                <code class="mdf-code-inline">h3</code> etc. sans sauter de
+                niveau. Pour faire cette vérification, on peut utiliser
+                l'extension web
+                <a
+                  href="https://chromewebstore.google.com/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi"
+                  class="mdf-link"
+                  >Headingsmap</a
+                >.
+              </p>
+              <p>
+                Techniquement, les textes ayant un style CSS de titre doivent
+                être contenus dans une balise HTML
+                <code class="mdf-code-inline">h1</code>,
+                <code class="mdf-code-inline">h2</code>, etc.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Balises vs styles CSS</h4>
+                <p>
+                  En pratique (pour des raisons techniques), la numérotation des
+                  balises <code class="mdf-code-inline">h1</code>,
+                  <code class="mdf-code-inline">h2</code>, etc ne correspond pas
+                  toujours à l'apparence des titres. Par exemple on a parfois un
+                  titre principal (avec un style CSS de titre principal) qui est
+                  pourtant contenu dans une balise HTML
+                  <code class="mdf-code-inline">h2</code>.
+                </p>
+                <p>
+                  Ce qui est important au final c'est la cohérence visuelle et
+                  la logique hiérarchique technique.
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">État du web</h4>
+                <p>
+                  <a
+                    href="https://webaim.org/projects/million/#headings"
+                    class="mdf-link"
+                    >D'après WebAIM</a
+                  >
+                  qui étudie les non-conformités sur des millions de sites tous
+                  les ans, en 2026 41,8% des pages d'accueil des sites vérifiés
+                  échouaient à avoir une structure de balises de heading HTML
+                  cohérente, et 7.5% des pages n'avaient pas de balises HTML de
+                  heading du tout.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 4 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}4{{/inline}} {{#*inline
+              "title"}}La page est toujours fonctionnelle avec un zoom de
+              200%{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.4"
+                    class="mdf-badge"
+                    >RGAA #10.4</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Les utilisateur·rices augmentent souvent la taille du texte pour
+                améliorer la lisibilité. Même sur mobile, beaucoup
+                d'utilisateur·rices paramètrent leurs appareils pour
+                systématiquement augmenter la taille du texte.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Il y a une différence entre augmenter la taille du texte à 200%
+                (ce qui est évalué par le RGAA), et zoomer une page jusqu'à
+                200%. Le plus sûr est de vérifier les deux systématiquement.
+              </p>
+              <div>
+                <span>Pour zoomer sur une page&nbsp;:</span>
+                <ul class="mdf-list">
+                  <li>
+                    Dans le menu du navigateur, aller dans "Présentation" >
+                    "zoom avant" jusqu'à atteindre 200%, ou
+                    <kbd class="mdf-kbd">Ctrl</kbd> +
+                    <kbd class="mdf-kbd">+</kbd> ou
+                    <kbd class="mdf-kbd">Cmd</kbd> +
+                    <kbd class="mdf-kbd">+</kbd> (sur Mac).
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <span
+                  >Pour augmenter la taille du texte (uniquement)&nbsp;:</span
+                >
+                <ul class="mdf-list">
+                  <li>
+                    Sur Firefox (un des seuls navigateurs où l'option est
+                    disponible par défaut), aller dans "Affichage" > "zoom" >
+                    "Agrandir uniquement le texte", puis zoomer sur la page (cf.
+                    le point précédent).
+                  </li>
+                </ul>
               </div>
               <p>
-                Le calcul du contraste est donc une opération linéaire entre les
-                deux couleurs en jeu. C'est une simplification qui ne correspond
-                pas à la perception des contrastes par l'œil humain. Par
-                conséquent, certaines combinaisons de couleurs qui sont
-                conformes au critère de contraste sont quand même illisibles.
+                Puis vérifier que la page est toujours utilisable de la même
+                manière qu'avec le zoom à 100%. Il faut que, malgré le zoom, les
+                informations accessibles, et les fonctionnalités soient les
+                mêmes qu'à 100%.
               </p>
-              <p>
-                D'autres algorithmes existent pour essayer de coller à la
-                perception humaine (<a
-                  class="mdf-link"
-                  href="https://adrianroselli.com/2026/04/wcag3-contrast-as-of-april-2026.html"
-                  >APCA étant le plus débattu en ligne</a
-                >), et les WCAG 3 pourraient modifier la manière de calculer le
-                contraste.
-              </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">État du web</h4>
-              <p>
-                <a
-                  class="mdf-link"
-                  href="https://webaim.org/projects/million/#contrast"
-                  >D'après WebAIM</a
-                >
-                qui étudie les non-conformités sur des millions de sites tous
-                les ans, en 2026 83,9% des pages d'accueil des sites vérifiés
-                échouaient à avoir un contraste suffisant entre le texte et
-                l'arrière-plan.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 2 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}2{{/inline}} {{#*inline
-            "title"}}Aucune information n'est donnée uniquement par la
-            couleur{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#3.1"
-                  class="mdf-badge"
-                  >RGAA #3.1</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Si la couleur est la seule source d'information, les personnes
-              ayant du mal à différencier certaines couleurs risquent de manquer
-              cette information.
-            </p>
-            <p>
-              C'est par exemple le cas pour un champ de formulaire dont la
-              bordure devient rouge (et rien d'autre) quand il est en erreur, ou
-              pour les courbes d'un graphique qui sont uniquement
-              différentiables par leur couleur.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Passer l'écran en mode noir et blanc (sur Mac activer le filtre
-              des couleurs dans les options d'accessibilité). Ou installer
-              l'extension
-              <a
-                href="https://chromewebstore.google.com/detail/colorblindly/floniaahmccleoclneebhhmnjgdfijgg"
-                class="mdf-link"
-                >colorblindly</a
-              >
-              avec l'option "Monochromacy". Puis vérifier que les éléments
-              d'interface sont toujours visibles et compréhensibles.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">
-                Information critique vs information secondaire
-              </h4>
-              <p>
-                La signification de "information" est sujette à interprétation.
-                Par exemple, un lien bleu qui devient violet quand il a déjà été
-                visité ne constitue pas une non conformité, même si rien d'autre
-                que la couleur n'indique le changement d'état.
-              </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">Contraste suffisant</h4>
-              <p>
-                Même si la couleur est la seule source d'information mais que le
-                contraste est suffisamment élevé, on peut parfois considérer le
-                critère conforme (à interpréter au cas par cas en testant
-                l'interface en noir et blanc. Dans le doute il vaut mieux
-                toujours prévoir une autre différentiation que la couleur ou le
-                contraste).
-              </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">Daltonisme</h4>
-              <p>
-                À l'échelle mondiale,
-                <a
-                  href="https://fr.wikipedia.org/wiki/Daltonisme"
-                  class="mdf-link"
-                  >5 à 10% des personnes</a
-                >
-                sont affectées par une forme de daltonisme.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 3 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}3{{/inline}} {{#*inline "title"}}La
-            hiérarchie des titres est pertinente visuellement et cohérente
-            techniquement{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#9.1"
-                  class="mdf-badge"
-                  >RGAA #9.1</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Avoir une hiérarchie des titres pertinente visuellement
-              (comprendre titre principal de la page, sous-titres, titres de
-              sections, etc.) permet aux utilisateur·rices de se repérer plus
-              facilement dans la page.
-            </p>
-            <p>
-              Avoir une hiérarchie des titres cohérente techniquement
-              (comprendre ordre d'apparition dans le
-              <a
-                href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model"
-                class="mdf-link"
-                >DOM</a
-              >
-              des balises <code class="mdf-code-inline">h1</code>,
-              <code class="mdf-code-inline">h2</code>, etc.) permet aux
-              utilisateur·rices de technologies d'assistance (par exemple de
-              lecteurs d'écran) de comprendre rapidement le contenu d'une page,
-              et de naviguer simplement vers une section en particulier.
-            </p>
-
-            <p>
-              Enfin, si un texte a un style CSS de titre (par exemple un nom de
-              section mis en avant par rapport au corps de texte), il doit être
-              contenu dans une balise de titre HTML, pour que les personnes
-              utilisant des technologies d'assistance puissent accéder
-              rapidement à cette section.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Pour être pertinents, les titres doivent d'abord avoir un contenu
-              textuel unique et explicite, pour qu'une personne naviguant au
-              lecteur d'écran puisse aller vers la bonne section avec certitude.
-            </p>
-            <p>
-              Les balises <code class="mdf-code-inline">h1</code>,
-              <code class="mdf-code-inline">h2</code>, etc. doivent respecter la
-              hiérarchie <code class="mdf-code-inline">h1</code> >
-              <code class="mdf-code-inline">h2</code> >
-              <code class="mdf-code-inline">h3</code> etc. sans sauter de
-              niveau. Pour faire cette vérification, on peut utiliser
-              l'extension web
-              <a
-                href="https://chromewebstore.google.com/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi"
-                class="mdf-link"
-                >Headingsmap</a
-              >.
-            </p>
-            <p>
-              Techniquement, les textes ayant un style CSS de titre doivent être
-              contenus dans une balise HTML
-              <code class="mdf-code-inline">h1</code>,
-              <code class="mdf-code-inline">h2</code>, etc.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Balises vs styles CSS</h4>
-              <p>
-                En pratique (pour des raisons techniques), la numérotation des
-                balises <code class="mdf-code-inline">h1</code>,
-                <code class="mdf-code-inline">h2</code>, etc ne correspond pas
-                toujours à l'apparence des titres. Par exemple on a parfois un
-                titre principal (avec un style CSS de titre principal) qui est
-                pourtant contenu dans une balise HTML
-                <code class="mdf-code-inline">h2</code>.
-              </p>
-              <p>
-                Ce qui est important au final c'est la cohérence visuelle et la
-                logique hiérarchique technique.
-              </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">État du web</h4>
-              <p>
-                <a
-                  href="https://webaim.org/projects/million/#headings"
-                  class="mdf-link"
-                  >D'après WebAIM</a
-                >
-                qui étudie les non-conformités sur des millions de sites tous
-                les ans, en 2026 41,8% des pages d'accueil des sites vérifiés
-                échouaient à avoir une structure de balises de heading HTML
-                cohérente, et 7.5% des pages n'avaient pas de balises HTML de
-                heading du tout.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 4 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}4{{/inline}} {{#*inline "title"}}La
-            page est toujours fonctionnelle avec un zoom de 200%{{/inline}} {{#*
-            inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.4"
-                  class="mdf-badge"
-                  >RGAA #10.4</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Les utilisateur·rices augmentent souvent la taille du texte pour
-              améliorer la lisibilité. Même sur mobile, beaucoup
-              d'utilisateur·rices paramètrent leurs appareils pour
-              systématiquement augmenter la taille du texte.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Il y a une différence entre augmenter la taille du texte à 200%
-              (ce qui est évalué par le RGAA), et zoomer une page jusqu'à 200%.
-              Le plus sûr est de vérifier les deux systématiquement.
-            </p>
-            <div>
-              <span>Pour zoomer sur une page&nbsp;:</span>
-              <ul class="mdf-list">
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Zoom sur mobile</h4>
+                <p>
+                  Le RGAA ne vérifie pas qu'une interface est utilisable avec un
+                  zoom à 200% <span class="mdf-emphasis">et</span> sur un petit
+                  écran. Mais c'est un cas d'utilisation relativement fréquent,
+                  il est donc important de tester avec ces paramètres.
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">Zoom et responsive</h4>
+                <p>
+                  Si le code CSS du site testé utilise des unités relatives
+                  (comme les
+                  <span class="mdf-code-inline">rem</span>), zoomer (uniquement)
+                  le texte de la page déclenche les
+                  <i class="mdf-italic">breakpoints</i> responsive comme si la
+                  largeur de la page avait été réduite. Si les
+                  <i class="mdf-italic">breakpoints</i> utilisent des unités
+                  absolues (comme les <span class="mdf-code-inline">px</span>),
+                  le zoom du texte laisse la structure de la page telle quelle
+                  et augmente uniquement la taille des pixels. Utiliser les
+                  unités relatives est une bonne pratique qui permet de se
+                  conformer au critère du zoom du texte et de la largeur de la
+                  page en même temps.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 5 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}5{{/inline}} {{#*inline
+              "title"}}La page est fonctionnelle sur toutes les tailles
+              d'écran{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
                 <li>
-                  Dans le menu du navigateur, aller dans "Présentation" > "zoom
-                  avant" jusqu'à atteindre 200%, ou
-                  <kbd class="mdf-kbd">Ctrl</kbd> +
-                  <kbd class="mdf-kbd">+</kbd> ou
-                  <kbd class="mdf-kbd">Cmd</kbd> +
-                  <kbd class="mdf-kbd">+</kbd> (sur Mac).
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.11"
+                    class="mdf-badge"
+                    >RGAA #10.11</a
+                  >
                 </li>
               </ul>
-            </div>
-            <div>
-              <span>Pour augmenter la taille du texte (uniquement)&nbsp;:</span>
-              <ul class="mdf-list">
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Les utilisateur·rices doivent pouvoir utiliser le site testé sur
+                différents appareils, et en particulier sur des tablettes ou des
+                mobiles. Du mobile de 320px de large zoomé à 200% à l'écran
+                géant, il est important de prendre en compte l'ensemble des
+                tailles d'écran possibles.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Ouvrir l'inspecteur de code sur la page web&nbsp;: sur Mac
+                <kbd class="mdf-kbd">Cmd</kbd> +
+                <kbd class="mdf-kbd">Maj</kbd> + <kbd class="mdf-kbd">i</kbd> ou
+                clic droit puis "inspecter l'élément". Ensuite, faire varier la
+                largeur de la barre latérale de l'inspecteur pour diminuer
+                l'espace disponible du site web.
+              </p>
+              <p>
+                Pour toutes largeurs d'écran au-dessus de 320px, et pour toutes
+                hauteurs d'écran au-dessus de 256px, les mêmes informations
+                doivent être accessibles et les fonctionnalités doivent être les
+                mêmes que sur n'importe quelle autre taille d'écran. Les
+                informations ou éléments interactifs ne doivent pas sortir de
+                l'écran.
+              </p>
+              <p>
+                Les dimensions 320px et 256px correspondent à un petit
+                smartphone (qui peut être en format portrait ou paysage). Donc
+                c'est soit l'un soit l'autre, et il n'est pas nécessaire de
+                tester un écran qui aurait à la fois 320px de largeur et 256px
+                de hauteur.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Toutes les tailles d'écran</h4>
+                <p>
+                  Il faut s'assurer que le site peut être utilisé pour toutes
+                  les tailles d'écran au-dessus de 320px de large. Les largeurs
+                  d'écran des utilisateur·rices sont
+                  <a href="https://viewports.fyi/" class="mdf-link"
+                    >extrêmement variées</a
+                  >
+                  (différents modèles d'appareils mobile, de tablettes,
+                  d'ordinateurs, différentes tailles de navigateurs, en mode
+                  vertical ou horizontal, avec des marges de l'application qui
+                  ouvre le site web, etc.).
+                </p>
+                <p>
+                  Les <i class="mdf-italic">breakpoints</i> qui sont souvent des
+                  largeurs fixées par les designers sont uniquement indicatifs,
+                  et ne correspondent pas nécessairement aux tailles d'écran les
+                  plus utilisées.
+                </p>
+                <p>
+                  De même, il vaut mieux éviter de parler de taille "mobile",
+                  "tablet" ou "desktop". Il n'y a presque pas de correspondance
+                  entre largeur d'écran et type d'appareil. Par exemple, un
+                  écran de 1500px de large ("desktop") avec un zoom à 200% peut
+                  très bien afficher le même contenu avec la même structure
+                  qu'un écran de 320px de large ("mobile") avec un zoom à 100%.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 6 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}6{{/inline}} {{#*inline
+              "title"}}Le texte est toujours lisible après avoir augmenté les
+              espacements du texte{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
                 <li>
-                  Sur Firefox (un des seuls navigateurs où l'option est
-                  disponible par défaut), aller dans "Affichage" > "zoom" >
-                  "Agrandir uniquement le texte", puis zoomer sur la page (cf.
-                  le point précédent).
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.12"
+                    class="mdf-badge"
+                    >RGAA #10.12</a
+                  >
                 </li>
               </ul>
-            </div>
-            <p>
-              Puis vérifier que la page est toujours utilisable de la même
-              manière qu'avec le zoom à 100%. Il faut que, malgré le zoom, les
-              informations accessibles, et les fonctionnalités soient les mêmes
-              qu'à 100%.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Zoom sur mobile</h4>
+              {{/inline}} {{#*inline "whyRule"}}
               <p>
-                Le RGAA ne vérifie pas qu'une interface est utilisable avec un
-                zoom à 200% <span class="mdf-emphasis">et</span> sur un petit
-                écran. Mais c'est un cas d'utilisation relativement fréquent, il
-                est donc important de tester avec ces paramètres.
+                Les utilisateur·rices peuvent avoir besoin d'augmenter l'espace
+                entre les caractères du texte, entre les mots, entre les lignes
+                ou entre les paragraphes pour mieux les lire.
               </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">Zoom et responsive</h4>
-              <p>
-                Si le code CSS du site testé utilise des unités relatives (comme
-                les
-                <span class="mdf-code-inline">rem</span>), zoomer (uniquement)
-                le texte de la page déclenche les
-                <i class="mdf-italic">breakpoints</i> responsive comme si la
-                largeur de la page avait été réduite. Si les
-                <i class="mdf-italic">breakpoints</i> utilisent des unités
-                absolues (comme les <span class="mdf-code-inline">px</span>), le
-                zoom du texte laisse la structure de la page telle quelle et
-                augmente uniquement la taille des pixels. Utiliser les unités
-                relatives est une bonne pratique qui permet de se conformer au
-                critère du zoom du texte et de la largeur de la page en même
-                temps.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 5 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}5{{/inline}} {{#*inline "title"}}La
-            page est fonctionnelle sur toutes les tailles d'écran{{/inline}}
-            {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.11"
-                  class="mdf-badge"
-                  >RGAA #10.11</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Les utilisateur·rices doivent pouvoir utiliser le site testé sur
-              différents appareils, et en particulier sur des tablettes ou des
-              mobiles. Du mobile de 320px de large zoomé à 200% à l'écran géant,
-              il est important de prendre en compte l'ensemble des tailles
-              d'écran possibles.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Ouvrir l'inspecteur de code sur la page web&nbsp;: sur Mac
-              <kbd class="mdf-kbd">Cmd</kbd> + <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">i</kbd> ou clic droit puis "inspecter
-              l'élément". Ensuite, faire varier la largeur de la barre latérale
-              de l'inspecteur pour diminuer l'espace disponible du site web.
-            </p>
-            <p>
-              Pour toutes largeurs d'écran au-dessus de 320px, et pour toutes
-              hauteurs d'écran au-dessus de 256px, les mêmes informations
-              doivent être accessibles et les fonctionnalités doivent être les
-              mêmes que sur n'importe quelle autre taille d'écran. Les
-              informations ou éléments interactifs ne doivent pas sortir de
-              l'écran.
-            </p>
-            <p>
-              Les dimensions 320px et 256px correspondent à un petit smartphone
-              (qui peut être en format portrait ou paysage). Donc c'est soit
-              l'un soit l'autre, et il n'est pas nécessaire de tester un écran
-              qui aurait à la fois 320px de largeur et 256px de hauteur.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Toutes les tailles d'écran</h4>
-              <p>
-                Il faut s'assurer que le site peut être utilisé pour toutes les
-                tailles d'écran au-dessus de 320px de large. Les largeurs
-                d'écran des utilisateur·rices sont
-                <a href="https://viewports.fyi/" class="mdf-link"
-                  >extrêmement variées</a
-                >
-                (différents modèles d'appareils mobile, de tablettes,
-                d'ordinateurs, différentes tailles de navigateurs, en mode
-                vertical ou horizontal, avec des marges de l'application qui
-                ouvre le site web, etc.).
-              </p>
-              <p>
-                Les <i class="mdf-italic">breakpoints</i> qui sont souvent des
-                largeurs fixées par les designers sont uniquement indicatifs, et
-                ne correspondent pas nécessairement aux tailles d'écran les plus
-                utilisées.
-              </p>
-              <p>
-                De même, il vaut mieux éviter de parler de taille "mobile",
-                "tablet" ou "desktop". Il n'y a presque pas de correspondance
-                entre largeur d'écran et type d'appareil. Par exemple, un écran
-                de 1500px de large ("desktop") avec un zoom à 200% peut très
-                bien afficher le même contenu avec la même structure qu'un écran
-                de 320px de large ("mobile") avec un zoom à 100%.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 6 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}6{{/inline}} {{#*inline "title"}}Le
-            texte est toujours lisible après avoir augmenté les espacements du
-            texte{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.12"
-                  class="mdf-badge"
-                  >RGAA #10.12</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Les utilisateur·rices peuvent avoir besoin d'augmenter l'espace
-              entre les caractères du texte, entre les mots, entre les lignes ou
-              entre les paragraphes pour mieux les lire.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <span
-              >Ouvrir l'inspecteur de code sur la page web&nbsp;: sur Mac
-              <kbd class="mdf-kbd">Cmd</kbd> + <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">i</kbd> ou clic droit, puis "inspecter
-              l'élément". Dans l'onglet "Console", coller le code suivant et
-              appuyer sur <kbd class="mdf-kbd">Enter</kbd>&nbsp;:</span
-            >
-            <div class="code-block-container">
-              <button
-                type="button"
-                class="mdf-button copy-code only-js"
-                id="copy-code"
+              {{/inline}} {{#*inline "howToCheck"}}
+              <span
+                >Ouvrir l'inspecteur de code sur la page web&nbsp;: sur Mac
+                <kbd class="mdf-kbd">Cmd</kbd> +
+                <kbd class="mdf-kbd">Maj</kbd> + <kbd class="mdf-kbd">i</kbd> ou
+                clic droit, puis "inspecter l'élément". Dans l'onglet "Console",
+                coller le code suivant et appuyer sur
+                <kbd class="mdf-kbd">Enter</kbd>&nbsp;:</span
               >
-                <span class="label">Copy</span>
-                <svg
-                  width="15px"
-                  height="15px"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
+              <div class="code-block-container">
+                <button
+                  type="button"
+                  class="mdf-button copy-code only-js"
+                  id="copy-code"
                 >
-                  <path
-                    fill="currentColor"
-                    stroke="currentColor"
-                    stroke-width="0.5px"
-                    d="M 18.07 19.58 a 3.01 3.01 90 0 1 -3.01 3.01 H 4.52 A 3.01 3.01 90 0 1 1.51 19.58 V 9.04 a 3.01 3.01 90 0 1 3.01 -3.01 v 1.51 a 1.51 1.51 90 0 0 -1.51 1.51 v 10.54 a 1.51 1.51 90 0 0 1.51 1.51 h 10.54 a 1.51 1.51 90 0 0 1.51 -1.51 h 1.51 z M 9.04 3.01 a 1.51 1.51 90 0 0 -1.51 1.51 v 10.54 a 1.51 1.51 90 0 0 1.51 1.51 h 10.54 a 1.51 1.51 90 0 0 1.51 -1.51 V 4.52 a 1.51 1.51 90 0 0 -1.51 -1.51 H 9.04 z m 0 -1.51 h 10.54 a 3.01 3.01 90 0 1 3.01 3.01 v 10.54 a 3.01 3.01 90 0 1 -3.01 3.01 H 9.04 a 3.01 3.01 90 0 1 -3.01 -3.01 V 4.52 A 3.01 3.01 90 0 1 9.04 1.51 z"
-                  />
-                </svg>
-              </button>
-              <pre
-                class="mdf-code-block language-javascript"
-              ><code>(function () {
+                  <span class="label">Copy</span>
+                  <svg
+                    width="15px"
+                    height="15px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="currentColor"
+                      stroke="currentColor"
+                      stroke-width="0.5px"
+                      d="M 18.07 19.58 a 3.01 3.01 90 0 1 -3.01 3.01 H 4.52 A 3.01 3.01 90 0 1 1.51 19.58 V 9.04 a 3.01 3.01 90 0 1 3.01 -3.01 v 1.51 a 1.51 1.51 90 0 0 -1.51 1.51 v 10.54 a 1.51 1.51 90 0 0 1.51 1.51 h 10.54 a 1.51 1.51 90 0 0 1.51 -1.51 h 1.51 z M 9.04 3.01 a 1.51 1.51 90 0 0 -1.51 1.51 v 10.54 a 1.51 1.51 90 0 0 1.51 1.51 h 10.54 a 1.51 1.51 90 0 0 1.51 -1.51 V 4.52 a 1.51 1.51 90 0 0 -1.51 -1.51 H 9.04 z m 0 -1.51 h 10.54 a 3.01 3.01 90 0 1 3.01 3.01 v 10.54 a 3.01 3.01 90 0 1 -3.01 3.01 H 9.04 a 3.01 3.01 90 0 1 -3.01 -3.01 V 4.52 A 3.01 3.01 90 0 1 9.04 1.51 z"
+                    />
+                  </svg>
+                </button>
+                <pre
+                  class="mdf-code-block language-javascript"
+                ><code>(function () {
     const elements = document.querySelectorAll('*');
     for (const el of elements) {
         el.style.lineHeight = "1.5";
@@ -625,1021 +635,1034 @@
         p.style.marginBottom = "2em";
     }
 })();</code></pre>
-            </div>
-            <p>
-              Ce script augmente les espacement de la page. Il faut alors que le
-              site testé soit utilisable de la même manière qu'avant, et
-              qu'aucune information n'ait disparue. Attention en particulier aux
-              blocs qui ont une largeur fixe (comme certains champs de
-              formulaire) qui risquent de voir disparaitre une partie de leur
-              contenu textuel.
-            </p>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}none{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 7 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}7{{/inline}} {{#*inline "title"}}Le
-            <i class="mdf-italic">title</i> de la page est unique et
-            pertinent{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#8.5"
-                  class="mdf-badge"
-                  >RGAA #8.5</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#8.6"
-                  class="mdf-badge"
-                  >RGAA #8.6</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Le <i class="mdf-italic">title</i> d'une page est le texte qui
-              apparait en tant que nom de l'onglet dans le navigateur.
-            </p>
-            <p>
-              Ce texte constitue le nom de la page pour que les
-              utilisateur·rices puissent identifier rapidement le contenu d'un
-              onglet. C'est très utile aux utilisateur·rices de technologies
-              d'assistance pour comprendre le contenu de la page quand elle
-              s'ouvre (par exemple à la suite d'une redirection ou d'une
-              navigation). Les lecteurs d'écran annoncent ce texte en premier
-              quand on arrive sur la page.
-            </p>
-            <p>
-              À ne pas confondre avec les titres (<i class="mdf-italic"
-                >headings</i
-              >) éventuels de la page qui sont, eux, inclus dans le contenu de
-              la page et qui sont entourés de balises
-              <code class="mdf-code-inline">h1</code>,
-              <code class="mdf-code-inline">h2</code>, etc.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Pour voir le texte du <i class="mdf-italic">title</i> en entier,
-              on peut passer la souris sur l'onglet dans la barre d'onglets du
-              navigateur. On trouve aussi ce texte en entier dans la balise
-              <code class="mdf-code-inline">title</code> incluse dans la balise
-              <code class="mdf-code-inline">head</code> du code HTML&nbsp;:
-              ouvrir l'inspecteur de code sur la page web&nbsp;: sur Mac
-              <kbd class="mdf-kbd">Cmd</kbd> + <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">i</kbd> ou clic droit, puis "inspecter
-              l'élément", puis dans l'onglet "Elements".
-            </p>
-            <p>
-              Il faut non seulement que ce
-              <i class="mdf-italic">title</i> existe, mais aussi qu'il indique
-              clairement le contenu de la page.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Organisation de l'information</h4>
+              </div>
               <p>
-                Il est de plus préférable que ce texte décrive la page du plus
-                précis au plus général, par exemple&nbsp;: "Ajoutez un avatar -
-                Création de compte - Mon Site" pour la sous-page d'ajout
-                d'avatar du formulaire de création de compte du site "Mon Site".
+                Ce script augmente les espacement de la page. Il faut alors que
+                le site testé soit utilisable de la même manière qu'avant, et
+                qu'aucune information n'ait disparue. Attention en particulier
+                aux blocs qui ont une largeur fixe (comme certains champs de
+                formulaire) qui risquent de voir disparaitre une partie de leur
+                contenu textuel.
+              </p>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}none{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 7 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}7{{/inline}} {{#*inline
+              "title"}}Le
+              <i class="mdf-italic">title</i> de la page est unique et
+              pertinent{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#8.5"
+                    class="mdf-badge"
+                    >RGAA #8.5</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#8.6"
+                    class="mdf-badge"
+                    >RGAA #8.6</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Le <i class="mdf-italic">title</i> d'une page est le texte qui
+                apparait en tant que nom de l'onglet dans le navigateur.
               </p>
               <p>
-                Avoir cet ordre permet aux utilisateur·rices de lecteurs d'écran
-                d'entendre annoncer directement le contexte le plus précis de la
-                page, et d'éviter d'avoir à attendre la répétition du nom du
-                site à chaque changement de page.
+                Ce texte constitue le nom de la page pour que les
+                utilisateur·rices puissent identifier rapidement le contenu d'un
+                onglet. C'est très utile aux utilisateur·rices de technologies
+                d'assistance pour comprendre le contenu de la page quand elle
+                s'ouvre (par exemple à la suite d'une redirection ou d'une
+                navigation). Les lecteurs d'écran annoncent ce texte en premier
+                quand on arrive sur la page.
               </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 8 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}8{{/inline}} {{#*inline
-            "title"}}Les éléments interactifs (liens, boutons, champs de
-            formulaires, etc.) sont opérables au clavier{{/inline}} {{#* inline
-            "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.3"
-                  class="mdf-badge"
-                  >RGAA #7.3</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Certain·es utilisateur·rices naviguent et opèrent les sites web
-              uniquement au clavier. Pour que ces personnes puissent utiliser le
-              site testé de la même manière qu'un·e utilisateur·rice de souris,
-              il faut que chaque élément interactif puisse être atteint et
-              puisse être actionné en utilisant uniquement le clavier.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <div>
-              Parcourir la page ou la fonctionnalité en appuyant sur
-              <kbd class="mdf-kbd">TAB</kbd> pour aller à l'élément interactif
-              suivant, et <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">TAB</kbd> pour revenir à l'élément interactif
-              précédent.
-              <ul class="mdf-list">
+              <p>
+                À ne pas confondre avec les titres (<i class="mdf-italic"
+                  >headings</i
+                >) éventuels de la page qui sont, eux, inclus dans le contenu de
+                la page et qui sont entourés de balises
+                <code class="mdf-code-inline">h1</code>,
+                <code class="mdf-code-inline">h2</code>, etc.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Pour voir le texte du <i class="mdf-italic">title</i> en entier,
+                on peut passer la souris sur l'onglet dans la barre d'onglets du
+                navigateur. On trouve aussi ce texte en entier dans la balise
+                <code class="mdf-code-inline">title</code> incluse dans la
+                balise <code class="mdf-code-inline">head</code> du code
+                HTML&nbsp;: ouvrir l'inspecteur de code sur la page web&nbsp;:
+                sur Mac <kbd class="mdf-kbd">Cmd</kbd> +
+                <kbd class="mdf-kbd">Maj</kbd> + <kbd class="mdf-kbd">i</kbd> ou
+                clic droit, puis "inspecter l'élément", puis dans l'onglet
+                "Elements".
+              </p>
+              <p>
+                Il faut non seulement que ce
+                <i class="mdf-italic">title</i> existe, mais aussi qu'il indique
+                clairement le contenu de la page.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Organisation de l'information</h4>
+                <p>
+                  Il est de plus préférable que ce texte décrive la page du plus
+                  précis au plus général, par exemple&nbsp;: "Ajoutez un avatar
+                  - Création de compte - Mon Site" pour la sous-page d'ajout
+                  d'avatar du formulaire de création de compte du site "Mon
+                  Site".
+                </p>
+                <p>
+                  Avoir cet ordre permet aux utilisateur·rices de lecteurs
+                  d'écran d'entendre annoncer directement le contexte le plus
+                  précis de la page, et d'éviter d'avoir à attendre la
+                  répétition du nom du site à chaque changement de page.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 8 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}8{{/inline}} {{#*inline
+              "title"}}Les éléments interactifs (liens, boutons, champs de
+              formulaires, etc.) sont opérables au clavier{{/inline}} {{#*
+              inline "rules"}}
+              <ul class="references">
                 <li>
-                  Les boutons doivent pouvoir être activés avec
-                  <kbd class="mdf-kbd">Space</kbd> ou
-                  <kbd class="mdf-kbd">Enter</kbd>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.3"
+                    class="mdf-badge"
+                    >RGAA #7.3</a
+                  >
                 </li>
-                <li>
-                  Les liens doivent pouvoir être activés avec
-                  <kbd class="mdf-kbd">Enter</kbd>
-                </li>
-                <li>
-                  Les cases à cocher doivent pouvoir être cochées ou décochées
-                  avec <kbd class="mdf-kbd">Space</kbd>
-                </li>
-                <li>
-                  Les éléments déclenchant l'ouverture d'une
-                  <i class="mdf-italic">popup</i>, d'un
-                  <i class="mdf-italic">dropdown</i> ou autre doivent pouvoir
-                  être ouverts au clavier (<kbd class="mdf-kbd">Space</kbd>,
-                  <kbd class="mdf-kbd">Enter</kbd>,
-                  <kbd class="mdf-kbd">Arrow Down</kbd> ou autre
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Certain·es utilisateur·rices naviguent et opèrent les sites web
+                uniquement au clavier. Pour que ces personnes puissent utiliser
+                le site testé de la même manière qu'un·e utilisateur·rice de
+                souris, il faut que chaque élément interactif puisse être
+                atteint et puisse être actionné en utilisant uniquement le
+                clavier.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <div>
+                Parcourir la page ou la fonctionnalité en appuyant sur
+                <kbd class="mdf-kbd">TAB</kbd> pour aller à l'élément interactif
+                suivant, et <kbd class="mdf-kbd">Maj</kbd> +
+                <kbd class="mdf-kbd">TAB</kbd> pour revenir à l'élément
+                interactif précédent.
+                <ul class="mdf-list">
+                  <li>
+                    Les boutons doivent pouvoir être activés avec
+                    <kbd class="mdf-kbd">Space</kbd> ou
+                    <kbd class="mdf-kbd">Enter</kbd>
+                  </li>
+                  <li>
+                    Les liens doivent pouvoir être activés avec
+                    <kbd class="mdf-kbd">Enter</kbd>
+                  </li>
+                  <li>
+                    Les cases à cocher doivent pouvoir être cochées ou décochées
+                    avec <kbd class="mdf-kbd">Space</kbd>
+                  </li>
+                  <li>
+                    Les éléments déclenchant l'ouverture d'une
+                    <i class="mdf-italic">popup</i>, d'un
+                    <i class="mdf-italic">dropdown</i> ou autre doivent pouvoir
+                    être ouverts au clavier (<kbd class="mdf-kbd">Space</kbd>,
+                    <kbd class="mdf-kbd">Enter</kbd>,
+                    <kbd class="mdf-kbd">Arrow Down</kbd> ou autre
+                    <a
+                      href="https://www.w3.org/WAI/ARIA/apg/patterns/"
+                      class="mdf-link"
+                      >en fonction du pattern</a
+                    >)
+                  </li>
+                  <li>
+                    Les boutons radio doivent pouvoir être navigables avec
+                    <kbd class="mdf-kbd">Up Arrow</kbd> et
+                    <kbd class="mdf-kbd">Down Arrow</kbd> ou
+                    <kbd class="mdf-kbd">Left Arrow</kbd>
+                    et <kbd class="mdf-kbd">Right Arrow</kbd>
+                  </li>
+                  <li>
+                    Les "tooltips" doivent apparaitre au focus de l'élément
+                    déclencheur
+                  </li>
+                  <li>
+                    Les <i class="mdf-italic">dialogs</i> doivent se fermer avec
+                    <kbd class="mdf-kbd">Escape</kbd>
+                  </li>
+                </ul>
+              </div>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Comportement natif</h4>
+                <p>
+                  Par défaut, l'utilisation des balises HTML
+                  <code class="mdf-code-inline">button</code>,
+                  <code class="mdf-code-inline">a</code> (link),
+                  <code class="mdf-code-inline">input</code> etc. intègre déjà
+                  les interactions nécessaires pour la navigation au clavier. Si
+                  le code HTML respecte cette sémantique, la vérification
+                  devrait être une formalité.
+                </p>
+              </div>
+              <div class="section">
+                <h4 class="mdf-title5">Patterns W3C</h4>
+                <span
+                  >Le W3C
                   <a
                     href="https://www.w3.org/WAI/ARIA/apg/patterns/"
                     class="mdf-link"
-                    >en fonction du pattern</a
-                  >)
-                </li>
-                <li>
-                  Les boutons radio doivent pouvoir être navigables avec
-                  <kbd class="mdf-kbd">Up Arrow</kbd> et
-                  <kbd class="mdf-kbd">Down Arrow</kbd> ou
-                  <kbd class="mdf-kbd">Left Arrow</kbd>
-                  et <kbd class="mdf-kbd">Right Arrow</kbd>
-                </li>
-                <li>
-                  Les "tooltips" doivent apparaitre au focus de l'élément
-                  déclencheur
-                </li>
-                <li>
-                  Les <i class="mdf-italic">dialogs</i> doivent se fermer avec
-                  <kbd class="mdf-kbd">Escape</kbd>
-                </li>
-              </ul>
-            </div>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Comportement natif</h4>
-              <p>
-                Par défaut, l'utilisation des balises HTML
-                <code class="mdf-code-inline">button</code>,
-                <code class="mdf-code-inline">a</code> (link),
-                <code class="mdf-code-inline">input</code> etc. intègre déjà les
-                interactions nécessaires pour la navigation au clavier. Si le
-                code HTML respecte cette sémantique, la vérification devrait
-                être une formalité.
-              </p>
-            </div>
-            <div class="section">
-              <h4 class="mdf-title5">Patterns W3C</h4>
-              <span
-                >Le W3C
-                <a
-                  href="https://www.w3.org/WAI/ARIA/apg/patterns/"
-                  class="mdf-link"
-                  >donne une liste</a
+                    >donne une liste</a
+                  >
+                  détaillée des différents patterns d'éléments et les
+                  recommandations liées à la navigation au clavier. Ces patterns
+                  ne sont pas mentionnés par le RGAA qui
+                  <a
+                    class="mdf-link"
+                    href="https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage"
+                    >stipule simplement que</a
+                  >
+                  &nbsp;:</span
                 >
-                détaillée des différents patterns d'éléments et les
-                recommandations liées à la navigation au clavier. Ces patterns
-                ne sont pas mentionnés par le RGAA qui
-                <a
-                  class="mdf-link"
-                  href="https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage"
-                  >stipule simplement que</a
-                >
-                &nbsp;:</span
-              >
-              <div class="mdf-quote">
-                <blockquote
-                  cite="https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage"
-                >
-                  <ul class="mdf-list">
-                    <li>
-                      Un composant d’interface (lien, bouton…) est accessible au
-                      clavier et par tout dispositif de pointage lorsque
-                      l’utilisateur peut prendre, indifféremment, le focus par
-                      un pointeur ou la touche tabulation ;
-                    </li>
-                    <li>
-                      Un composant d’interface (lien, bouton…) est activable au
-                      clavier et par tout dispositif de pointage lorsque
-                      l’utilisateur peut enclencher, indifféremment, l’action
-                      prévue par le composant d’interface par une pression du
-                      pointeur ou la touche entrée du clavier ;
-                    </li>
-                  </ul>
-                </blockquote>
-              </div>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 9 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}9{{/inline}} {{#*inline
-            "title"}}Les éléments interactifs (liens, boutons, champs de
-            formulaires, etc.) sont atteignables au clavier dans un ordre
-            logique{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#12.8"
-                  class="mdf-badge"
-                  >RGAA #12.8</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Si l'ordre de navigation au clavier ne respecte pas un ordre
-              cohérent (l'ordre le plus cohérent n'est pas systématiquement
-              l'ordre de lecture classique), les utilisateur·rices peuvent se
-              perdre dans la page, et interagir avec le mauvais élément.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Parcourir la page testée avec
-              <kbd class="mdf-kbd">TAB</kbd> et <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">TAB</kbd> et vérifier que l'ordre de la prise
-              de focus des éléments interactifs est cohérent.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}} {{/inline}}{{#* inline
-            "displayGoFurther"}}none{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 10 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}10{{/inline}} {{#*inline
-            "title"}}Les éléments interactifs (liens, boutons, champs de
-            formulaires, etc.) ont un style de focus visible{{/inline}} {{#*
-            inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.7"
-                  class="mdf-badge"
-                  >RGAA #10.7</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Pour que les personnes naviguant au clavier se situent dans la
-              page, et pour qu'elles sachent quel élément interactif est
-              actionnable, il faut que l'élément portant le focus soit
-              facilement identifiable. Le plus souvent, on reconnait cet élément
-              à un contour externe.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Parcourir la page testée avec
-              <kbd class="mdf-kbd">TAB</kbd> et <kbd class="mdf-kbd">Maj</kbd> +
-              <kbd class="mdf-kbd">TAB</kbd> et vérifier qu'on distingue
-              toujours à l'écran quel élément est en focus.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Visibilité du contour de focus</h4>
-              <div>
-                Pour que l'élément qui est en focus soit facilement
-                identifiable, il faut que le contour du
-                <i class="italic">focus</i> soit suffisamment épais, et que son
-                contraste avec l'arrière-plan soit suffisant.
-                <a
-                  href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance"
-                  class="mdf-link"
-                  >Le W3C donne des indications (en anglais)</a
-                >
-                sur la marche à suivre pour designer un contour de
-                <i class="italic">focus</i>
-                accessible. Le RGAA quant à lui précise un contraste
-                minimum&nbsp;:
                 <div class="mdf-quote">
                   <blockquote
-                    cite="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance"
+                    cite="https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage"
                   >
-                    Pour chaque élément susceptible de recevoir le focus,
-                    vérifier que l’indication visuelle de la prise de focus est
-                    présente (en agissant sur le contour ou le fond ou les deux)
-                    et est suffisamment contrastée (ratio de contraste égal ou
-                    supérieur à 3:1) ;
+                    <ul class="mdf-list">
+                      <li>
+                        Un composant d’interface (lien, bouton…) est accessible
+                        au clavier et par tout dispositif de pointage lorsque
+                        l’utilisateur peut prendre, indifféremment, le focus par
+                        un pointeur ou la touche tabulation ;
+                      </li>
+                      <li>
+                        Un composant d’interface (lien, bouton…) est activable
+                        au clavier et par tout dispositif de pointage lorsque
+                        l’utilisateur peut enclencher, indifféremment, l’action
+                        prévue par le composant d’interface par une pression du
+                        pointeur ou la touche entrée du clavier ;
+                      </li>
+                    </ul>
                   </blockquote>
                 </div>
               </div>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 11 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}11{{/inline}} {{#*inline
-            "title"}}Les liens et boutons ont un nom accessible
-            explicite{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9"
-                  class="mdf-badge"
-                  >RGAA #11.9</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1"
-                  class="mdf-badge"
-                  >RGAA #6.1</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.2"
-                  class="mdf-badge"
-                  >RGAA #6.2</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Certain·es utilisateur·rices parcourent les pages web en se
-              déplaçant de bouton en bouton ou de lien en lien. Comment savoir
-              alors à quoi sert un bouton "Cliquez ici", ou comment savoir vers
-              quel lien "Lire plus" naviguer s'il y en a plusieurs sur la page ?
-              Il est important que les boutons et liens soient compréhensibles
-              par leur nom, hors de leur contexte visuel.
-            </p>
-            <p>
-              Aussi, les utilisateur·rices de commande vocale ont besoin
-              d'accéder à un bouton par son nom. Si celui-ci n'est pas unique,
-              cette opération devient compliquée.
-            </p>
-            <p>
-              Enfin, pour les utilisateur·rices de lecteurs d'écran, si un lien
-              a pour nom un URL tel que "http://www...", le lecteur va annoncer
-              chaque caractère de l'URL, ce qui est long, souvent
-              incompréhensible et facilement évitable.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Il faut s'assurer que tous les liens et boutons ont un nom (soit
-              un texte visible, soit un texte annoncé par les
-              <a href="#screenreaders" class="mdf-link">lecteurs d'écran</a>
-              qui atteignent l'élément). Il faut que les noms soient
-              compréhensibles hors de leur contexte et qu'ils soient uniques.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">
-                Attribut <code class="mdf-code-inline">title</code>
-              </h4>
-              <div>
-                L'attribut <code class="mdf-code-inline">title</code> ajoute un
-                nom à un élément qui apparait dans une
-                <i class="mdf-italic">popup</i> du navigateur si on laisse la
-                souris sur l'élément suffisamment longtemps. C'est un "faux"
-                <i class="mdf-italic">tooltip</i> qui ne doit pas être considéré
-                comme un nom accessible. En effet, cet attribut a deux
-                limitations&nbsp;:
-                <ul class="mdf-list">
-                  <li>
-                    Il est impossible de déclencher son ouverture pour les
-                    utilisateur·rices de claviers
-                  </li>
-                  <li>
-                    Historiquement les technologies d'assistance supportent mal
-                    cet attribut, et la restitution textuelle peut être
-                    imprévisible
-                  </li>
-                </ul>
-                <p>
-                  Le RGAA est flou à ce sujet, et les critères
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 9 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}9{{/inline}} {{#*inline
+              "title"}}Les éléments interactifs (liens, boutons, champs de
+              formulaires, etc.) sont atteignables au clavier dans un ordre
+              logique{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
                   <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#12.8"
+                    class="mdf-badge"
+                    >RGAA #12.8</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Si l'ordre de navigation au clavier ne respecte pas un ordre
+                cohérent (l'ordre le plus cohérent n'est pas systématiquement
+                l'ordre de lecture classique), les utilisateur·rices peuvent se
+                perdre dans la page, et interagir avec le mauvais élément.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Parcourir la page testée avec
+                <kbd class="mdf-kbd">TAB</kbd> et
+                <kbd class="mdf-kbd">Maj</kbd> +
+                <kbd class="mdf-kbd">TAB</kbd> et vérifier que l'ordre de la
+                prise de focus des éléments interactifs est cohérent.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}} {{/inline}}{{#* inline
+              "displayGoFurther"}}none{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 10 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}10{{/inline}} {{#*inline
+              "title"}}Les éléments interactifs (liens, boutons, champs de
+              formulaires, etc.) ont un style de focus visible{{/inline}} {{#*
+              inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.7"
+                    class="mdf-badge"
+                    >RGAA #10.7</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Pour que les personnes naviguant au clavier se situent dans la
+                page, et pour qu'elles sachent quel élément interactif est
+                actionnable, il faut que l'élément portant le focus soit
+                facilement identifiable. Le plus souvent, on reconnait cet
+                élément à un contour externe.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Parcourir la page testée avec
+                <kbd class="mdf-kbd">TAB</kbd> et
+                <kbd class="mdf-kbd">Maj</kbd> +
+                <kbd class="mdf-kbd">TAB</kbd> et vérifier qu'on distingue
+                toujours à l'écran quel élément est en focus.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Visibilité du contour de focus</h4>
+                <div>
+                  Pour que l'élément qui est en focus soit facilement
+                  identifiable, il faut que le contour du
+                  <i class="italic">focus</i> soit suffisamment épais, et que
+                  son contraste avec l'arrière-plan soit suffisant.
+                  <a
+                    href="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance"
                     class="mdf-link"
+                    >Le W3C donne des indications (en anglais)</a
+                  >
+                  sur la marche à suivre pour designer un contour de
+                  <i class="italic">focus</i>
+                  accessible. Le RGAA quant à lui précise un contraste
+                  minimum&nbsp;:
+                  <div class="mdf-quote">
+                    <blockquote
+                      cite="https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance"
+                    >
+                      Pour chaque élément susceptible de recevoir le focus,
+                      vérifier que l’indication visuelle de la prise de focus
+                      est présente (en agissant sur le contour ou le fond ou les
+                      deux) et est suffisamment contrastée (ratio de contraste
+                      égal ou supérieur à 3:1) ;
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 11 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}11{{/inline}} {{#*inline
+              "title"}}Les liens et boutons ont un nom accessible
+              explicite{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
                     href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9"
-                    >#11.9</a
-                  >,
+                    class="mdf-badge"
+                    >RGAA #11.9</a
+                  >
+                </li>
+                <li>
                   <a
-                    class="mdf-link"
                     href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1"
-                    >#6.1</a
+                    class="mdf-badge"
+                    >RGAA #6.1</a
                   >
-                  et
+                </li>
+                <li>
                   <a
-                    class="mdf-link"
                     href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.2"
-                    >#6.2</a
+                    class="mdf-badge"
+                    >RGAA #6.2</a
                   >
-                  restent conformes, mais l'utilisation du
-                  <code class="mdf-code-inline">title</code> rend le critère
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Certain·es utilisateur·rices parcourent les pages web en se
+                déplaçant de bouton en bouton ou de lien en lien. Comment savoir
+                alors à quoi sert un bouton "Cliquez ici", ou comment savoir
+                vers quel lien "Lire plus" naviguer s'il y en a plusieurs sur la
+                page ? Il est important que les boutons et liens soient
+                compréhensibles par leur nom, hors de leur contexte visuel.
+              </p>
+              <p>
+                Aussi, les utilisateur·rices de commande vocale ont besoin
+                d'accéder à un bouton par son nom. Si celui-ci n'est pas unique,
+                cette opération devient compliquée.
+              </p>
+              <p>
+                Enfin, pour les utilisateur·rices de lecteurs d'écran, si un
+                lien a pour nom un URL tel que "http://www...", le lecteur va
+                annoncer chaque caractère de l'URL, ce qui est long, souvent
+                incompréhensible et facilement évitable.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Il faut s'assurer que tous les liens et boutons ont un nom (soit
+                un texte visible, soit un texte annoncé par les
+                <a href="#screenreaders" class="mdf-link">lecteurs d'écran</a>
+                qui atteignent l'élément). Il faut que les noms soient
+                compréhensibles hors de leur contexte et qu'ils soient uniques.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">
+                  Attribut <code class="mdf-code-inline">title</code>
+                </h4>
+                <div>
+                  L'attribut <code class="mdf-code-inline">title</code> ajoute
+                  un nom à un élément qui apparait dans une
+                  <i class="mdf-italic">popup</i> du navigateur si on laisse la
+                  souris sur l'élément suffisamment longtemps. C'est un "faux"
+                  <i class="mdf-italic">tooltip</i> qui ne doit pas être
+                  considéré comme un nom accessible. En effet, cet attribut a
+                  deux limitations&nbsp;:
+                  <ul class="mdf-list">
+                    <li>
+                      Il est impossible de déclencher son ouverture pour les
+                      utilisateur·rices de claviers
+                    </li>
+                    <li>
+                      Historiquement les technologies d'assistance supportent
+                      mal cet attribut, et la restitution textuelle peut être
+                      imprévisible
+                    </li>
+                  </ul>
+                  <p>
+                    Le RGAA est flou à ce sujet, et les critères
+                    <a
+                      class="mdf-link"
+                      href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.9"
+                      >#11.9</a
+                    >,
+                    <a
+                      class="mdf-link"
+                      href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1"
+                      >#6.1</a
+                    >
+                    et
+                    <a
+                      class="mdf-link"
+                      href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.2"
+                      >#6.2</a
+                    >
+                    restent conformes, mais l'utilisation du
+                    <code class="mdf-code-inline">title</code> rend le critère
+                    <a
+                      class="mdf-link"
+                      href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.13"
+                      >#10.13</a
+                    >
+                    non conforme dans certains audits RGAA.
+                  </p>
+                </div>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 12 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}12{{/inline}} {{#*inline
+              "title"}}Les messages d'erreur des champs de formulaire sont
+              associés techniquement au champ concerné et restitués
+              immédiatement{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
                   <a
-                    class="mdf-link"
-                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#10.13"
-                    >#10.13</a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.5"
+                    class="mdf-badge"
+                    >RGAA #7.5</a
                   >
-                  non conforme dans certains audits RGAA.
+                </li>
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
+                    class="mdf-badge"
+                    >RGAA #11.10</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Restituer automatiquement les messages d'erreur au moment où ils
+                surviennent est essentiel pour que les utilisateur·rices de ces
+                technologies comprennent l'erreur qui a été faite sans avoir
+                besoin de naviguer dans la page jusqu'à l'endroit où l'erreur
+                est affichée (souvent sous le champ mais parfois en bas du
+                formulaire).
+              </p>
+              <p>
+                Lorsqu'un·e utilisateur·rice de lecteur d'écran navigue jusqu'à
+                un champ en erreur, si le message d'erreur est lié techniquement
+                au champ, l'erreur est annoncée par le lecteur d'écran. Si le
+                lien technique n'est pas fait (et si, contrairement au point
+                précédent, l'erreur ne vient pas d'avoir lieu),
+                l'utilisateur·rice doit aller chercher dans le formulaire quel
+                message d'erreur correspond à ce champ.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                <a href="#screenreaders" class="mdf-link"
+                  >En testant avec un lecteur d'écran</a
+                >, remplir le champ de formulaire et lorsqu'une erreur survient
+                sur un champ, s'assurer qu'elle est restituée immédiatement.
+              </p>
+              <p>
+                En naviguant avec le clavier et un lecteur d'écran de champ en
+                champ avec <kbd class="mdf-kbd">TAB</kbd> et
+                <kbd class="mdf-kbd">Maj</kbd> + <kbd class="mdf-kbd">TAB</kbd>,
+                si un des champs sur lequel le focus passe est en erreur,
+                s'assurer que le lecteur d'écran restitue le texte de l'erreur.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Différents types d'annonces</h4>
+                <div>
+                  Il existe
+                  <a
+                    href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live"
+                    class="mdf-link"
+                    >plusieurs méthodes</a
+                  >
+                  pour qu'un contenu soit restitué de cette manière. Un texte
+                  peut être&nbsp;:
+                  <ul class="mdf-list">
+                    <li>
+                      restitué en mode "assertive" (le message est alors annoncé
+                      immédiatement quitte à interrompre la restitution en
+                      cours). Ce mode est surtout utilisé pour les messages très
+                      importants comme les erreurs
+                    </li>
+                    <li>
+                      restitué en mode "polite" (le message sera lu après la
+                      restitution en cours). En général on privilégie ce mode
+                      pour éviter d'ajouter de la confusion à la restitution.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 13 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}13{{/inline}} {{#*inline
+              "title"}}Les messages d'information dynamiques (<i
+                class="mdf-italic"
+                >toasts</i
+              >, notifications <i class="mdf-italic">popup</i>) sont annoncés
+              aux technologies d'assistance{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.5"
+                    class="mdf-badge"
+                    >RGAA #7.5</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Les messages de notification qui apparaissent à l'écran après
+                une action donnent souvent des informations essentielles aux
+                utilisateur·rices. Les personnes utilisant des lecteurs d'écran
+                ne peuvent pas lire ce message au moment où il est utile s'il
+                n'est pas restitué.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                <a href="#screenreaders" class="mdf-link"
+                  >En utilisant un lecteur d'écran</a
+                >, faire une action qui déclenche l'apparition d'une
+                notification. Le contenu de celle-ci doit être restitué.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Différents types d'annonces</h4>
+                <div>
+                  Il existe
+                  <a
+                    href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live"
+                    class="mdf-link"
+                    >plusieurs méthodes</a
+                  >
+                  pour qu'un contenu soit restitué de cette manière. Un texte
+                  peut être&nbsp;:
+                  <ul class="mdf-list">
+                    <li>
+                      restitué en mode "assertive" (le message est alors annoncé
+                      immédiatement quitte à interrompre la restitution en
+                      cours). Ce mode est surtout utilisé pour les messages très
+                      importants comme les erreurs
+                    </li>
+                    <li>
+                      restitué en mode "polite" (le message sera lu après la
+                      restitution en cours). En général on privilégie ce mode
+                      pour éviter d'ajouter de la confusion à la restitution.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 14 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}14{{/inline}} {{#*inline
+              "title"}}Les liens indiquent clairement s'ils ouvrent un nouvel
+              onglet{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1"
+                    class="mdf-badge"
+                    >RGAA #6.1</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Revenir sur l'onglet depuis lequel a été ouverte la page
+                actuelle peut être laborieux pour les utilisateur·rices de
+                lecteurs d'écran ou de clavier, alors que revenir sur la page
+                précédente en restant dans le même onglet est plus simple.
+              </p>
+              <p>
+                Par défaut, les liens du web s'ouvrent dans le même onglet, il
+                vaut donc toujours mieux être explicite quand le lien s'ouvre
+                dans un nouvel onglet.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Les liens ouvrant un nouvel onglet doivent avoir un signe
+                distinctif (par exemple une icône) qui est compréhensible
+                visuellement comme étant un signe d'ouverture dans un nouvel
+                onglet.
+                <a href="#screenreaders" class="mdf-link">Au lecteur d'écran</a
+                >, il faut qu'au nom accessible du lien soit accolé la mention
+                "Nouvelle fenêtre" ou "Nouvel onglet" (souvent il s'agit du nom
+                accessible de l'icône elle-même).
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">UX du changement d'onglet</h4>
+                <p>
+                  Pour essayer de faciliter la navigation entre les onglets de
+                  l'utilisateur·rice, il est même conseillé d'ouvrir le moins
+                  souvent possible un lien dans un nouvel onglet, les
+                  utilisateur·rices pouvant le faire eux-mêmes si c'est ce
+                  qu'ils souhaitent.
                 </p>
               </div>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 12 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}12{{/inline}} {{#*inline
-            "title"}}Les messages d'erreur des champs de formulaire sont
-            associés techniquement au champ concerné et restitués
-            immédiatement{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.5"
-                  class="mdf-badge"
-                  >RGAA #7.5</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
-                  class="mdf-badge"
-                  >RGAA #11.10</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Restituer automatiquement les messages d'erreur au moment où ils
-              surviennent est essentiel pour que les utilisateur·rices de ces
-              technologies comprennent l'erreur qui a été faite sans avoir
-              besoin de naviguer dans la page jusqu'à l'endroit où l'erreur est
-              affichée (souvent sous le champ mais parfois en bas du
-              formulaire).
-            </p>
-            <p>
-              Lorsqu'un·e utilisateur·rice de lecteur d'écran navigue jusqu'à un
-              champ en erreur, si le message d'erreur est lié techniquement au
-              champ, l'erreur est annoncée par le lecteur d'écran. Si le lien
-              technique n'est pas fait (et si, contrairement au point précédent,
-              l'erreur ne vient pas d'avoir lieu), l'utilisateur·rice doit aller
-              chercher dans le formulaire quel message d'erreur correspond à ce
-              champ.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              <a href="#screenreaders" class="mdf-link"
-                >En testant avec un lecteur d'écran</a
-              >, remplir le champ de formulaire et lorsqu'une erreur survient
-              sur un champ, s'assurer qu'elle est restituée immédiatement.
-            </p>
-            <p>
-              En naviguant avec le clavier et un lecteur d'écran de champ en
-              champ avec <kbd class="mdf-kbd">TAB</kbd> et
-              <kbd class="mdf-kbd">Maj</kbd> + <kbd class="mdf-kbd">TAB</kbd>,
-              si un des champs sur lequel le focus passe est en erreur,
-              s'assurer que le lecteur d'écran restitue le texte de l'erreur.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Différents types d'annonces</h4>
-              <div>
-                Il existe
-                <a
-                  href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live"
-                  class="mdf-link"
-                  >plusieurs méthodes</a
-                >
-                pour qu'un contenu soit restitué de cette manière. Un texte peut
-                être&nbsp;:
-                <ul class="mdf-list">
-                  <li>
-                    restitué en mode "assertive" (le message est alors annoncé
-                    immédiatement quitte à interrompre la restitution en cours).
-                    Ce mode est surtout utilisé pour les messages très
-                    importants comme les erreurs
-                  </li>
-                  <li>
-                    restitué en mode "polite" (le message sera lu après la
-                    restitution en cours). En général on privilégie ce mode pour
-                    éviter d'ajouter de la confusion à la restitution.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 13 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}13{{/inline}} {{#*inline
-            "title"}}Les messages d'information dynamiques (<i
-              class="mdf-italic"
-              >toasts</i
-            >, notifications <i class="mdf-italic">popup</i>) sont annoncés aux
-            technologies d'assistance{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#7.5"
-                  class="mdf-badge"
-                  >RGAA #7.5</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Les messages de notification qui apparaissent à l'écran après une
-              action donnent souvent des informations essentielles aux
-              utilisateur·rices. Les personnes utilisant des lecteurs d'écran ne
-              peuvent pas lire ce message au moment où il est utile s'il n'est
-              pas restitué.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              <a href="#screenreaders" class="mdf-link"
-                >En utilisant un lecteur d'écran</a
-              >, faire une action qui déclenche l'apparition d'une notification.
-              Le contenu de celle-ci doit être restitué.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Différents types d'annonces</h4>
-              <div>
-                Il existe
-                <a
-                  href="https://developer.mozilla.org/fr/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live"
-                  class="mdf-link"
-                  >plusieurs méthodes</a
-                >
-                pour qu'un contenu soit restitué de cette manière. Un texte peut
-                être&nbsp;:
-                <ul class="mdf-list">
-                  <li>
-                    restitué en mode "assertive" (le message est alors annoncé
-                    immédiatement quitte à interrompre la restitution en cours).
-                    Ce mode est surtout utilisé pour les messages très
-                    importants comme les erreurs
-                  </li>
-                  <li>
-                    restitué en mode "polite" (le message sera lu après la
-                    restitution en cours). En général on privilégie ce mode pour
-                    éviter d'ajouter de la confusion à la restitution.
-                  </li>
-                </ul>
-              </div>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 14 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}14{{/inline}} {{#*inline
-            "title"}}Les liens indiquent clairement s'ils ouvrent un nouvel
-            onglet{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#6.1"
-                  class="mdf-badge"
-                  >RGAA #6.1</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Revenir sur l'onglet depuis lequel a été ouverte la page actuelle
-              peut être laborieux pour les utilisateur·rices de lecteurs d'écran
-              ou de clavier, alors que revenir sur la page précédente en restant
-              dans le même onglet est plus simple.
-            </p>
-            <p>
-              Par défaut, les liens du web s'ouvrent dans le même onglet, il
-              vaut donc toujours mieux être explicite quand le lien s'ouvre dans
-              un nouvel onglet.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Les liens ouvrant un nouvel onglet doivent avoir un signe
-              distinctif (par exemple une icône) qui est compréhensible
-              visuellement comme étant un signe d'ouverture dans un nouvel
-              onglet.
-              <a href="#screenreaders" class="mdf-link">Au lecteur d'écran</a>,
-              il faut qu'au nom accessible du lien soit accolé la mention
-              "Nouvelle fenêtre" ou "Nouvel onglet" (souvent il s'agit du nom
-              accessible de l'icône elle-même).
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">UX du changement d'onglet</h4>
-              <p>
-                Pour essayer de faciliter la navigation entre les onglets de
-                l'utilisateur·rice, il est même conseillé d'ouvrir le moins
-                souvent possible un lien dans un nouvel onglet, les
-                utilisateur·rices pouvant le faire eux-mêmes si c'est ce qu'ils
-                souhaitent.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 15 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}15{{/inline}} {{#*inline
-            "title"}}Les champs de formulaire ont une étiquette (<i
-              class="mdf-italic"
-              >label</i
-            >) décrivant leur rôle{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1"
-                  class="mdf-badge"
-                  >RGAA #11.1</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.4"
-                  class="mdf-badge"
-                  >RGAA #11.4</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Pour comprendre le rôle d'un champ de formulaire (visuellement ou
-              via les technologies d'assistance), le champ doit être accolé à
-              son étiquette (<i class="mdf-italic">label</i>), et il doit être
-              lié techniquement à celle-ci.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Il faut d'abord que tous les champs de formulaire (<i
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 15 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}15{{/inline}} {{#*inline
+              "title"}}Les champs de formulaire ont une étiquette (<i
                 class="mdf-italic"
-                >checkbox</i
-              >, <i class="mdf-italic">select</i>,
-              <i class="mdf-italic">input</i> de texte,
-              <i class="mdf-italic">input</i> de date, etc.) aient une étiquette
-              visible.
-            </p>
-            <p>
-              Si l'étiquette est bien liée techniquement au champ, le clic sur
-              l'étiquette devrait placer le focus dans le champ en question.
-            </p>
-            <p>
-              Il est possible que le champ soit étiquetté par un texte ailleurs
-              sur la page. Dans ce cas, cliquer sur ce texte ne place pas le
-              <i class="mdf-italic">focus</i> dans le champ, et il faut vérifier
-              que le
-              <a href="#screenreaders" class="mdf-link">lecteur d'écran</a>
-              annonce le texte en question quand l'utilisateur·rice
-              <i class="mdf-italic">focus</i> le champ.
-            </p>
-            <p>
-              Quel que soit le type d'étiquette, celle-ci doit être restituée
-              par le lecteur d'écran au moment où le champ est atteint.
-            </p>
-            <div>
-              Attention, le <i class="mdf-italic">placeholder</i> des inputs ne
-              fait pas office d'étiquette car il a 3 limitations&nbsp;:
-              <ul class="mdf-list">
+                >label</i
+              >) décrivant leur rôle{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
                 <li>
-                  Il n'est pas systématiquement compris par les technologies
-                  d'assistance
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.1"
+                    class="mdf-badge"
+                    >RGAA #11.1</a
+                  >
                 </li>
                 <li>
-                  Il disparait quand on commence à taper dans le champ. Par
-                  exemple arriver sur un formulaire pré-rempli ne nous permet
-                  pas de connaitre le rôle des champs
-                </li>
-                <li>
-                  Il a souvent un contraste trop faible avec l'arrière-plan qui
-                  le rend illisible, ou un contraste trop proche du corps de
-                  texte qui le confond avec du texte qui aurait été entré dans
-                  le champ
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.4"
+                    class="mdf-badge"
+                    >RGAA #11.4</a
+                  >
                 </li>
               </ul>
-            </div>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Absence d'étiquette textuelle</h4>
+              {{/inline}} {{#*inline "whyRule"}}
               <p>
-                En pratique il faut toujours avoir une étiquette textuelle
-                visible. Cependant il existe des exceptions dans les cas où le
-                rôle du champ est extrêmement clair pour les utilisateur·rices.
+                Pour comprendre le rôle d'un champ de formulaire (visuellement
+                ou via les technologies d'assistance), le champ doit être accolé
+                à son étiquette (<i class="mdf-italic">label</i>), et il doit
+                être lié techniquement à celle-ci.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Il faut d'abord que tous les champs de formulaire (<i
+                  class="mdf-italic"
+                  >checkbox</i
+                >, <i class="mdf-italic">select</i>,
+                <i class="mdf-italic">input</i> de texte,
+                <i class="mdf-italic">input</i> de date, etc.) aient une
+                étiquette visible.
               </p>
               <p>
-                Par exemple pour un champ de texte recherche portant une icône
-                de loupe (celle-ci ayant pour nom accessible "Rechercher"),
-                alors on comprend (visuellement et via les technologies
-                d'assistance) que c'est un champ de recherche.
+                Si l'étiquette est bien liée techniquement au champ, le clic sur
+                l'étiquette devrait placer le focus dans le champ en question.
               </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 16 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}16{{/inline}} {{#*inline
-            "title"}}Les champs de formulaire obligatoires sont marqués comme
-            obligatoires visuellement et techniquement{{/inline}} {{#* inline
-            "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
-                  class="mdf-badge"
-                  >RGAA #11.10</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Pour aider au remplissage des formulaires, il faut indiquer
-              clairement quels champs sont obligatoires.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              <a href="#screenreaders" class="mdf-link">Au lecteur d'écran</a>,
-              lorsqu'on atteint le champ obligatoire, la mention "obligatoire"
-              doit être restituée après l'annonce de l'étiquette du champ. C'est
-              le cas automatiquement quand le champ porte l'attribut
-              <code class="mdf-code-inline">required</code> ou
-              <code class="mdf-code-inline">aria-required="true"</code>.
-            </p>
-            <div>
-              Visuellement on doit voir sur les champs obligatoires&nbsp;:
-              <ul class="mdf-list">
+              <p>
+                Il est possible que le champ soit étiquetté par un texte
+                ailleurs sur la page. Dans ce cas, cliquer sur ce texte ne place
+                pas le
+                <i class="mdf-italic">focus</i> dans le champ, et il faut
+                vérifier que le
+                <a href="#screenreaders" class="mdf-link">lecteur d'écran</a>
+                annonce le texte en question quand l'utilisateur·rice
+                <i class="mdf-italic">focus</i> le champ.
+              </p>
+              <p>
+                Quel que soit le type d'étiquette, celle-ci doit être restituée
+                par le lecteur d'écran au moment où le champ est atteint.
+              </p>
+              <div>
+                Attention, le <i class="mdf-italic">placeholder</i> des inputs
+                ne fait pas office d'étiquette car il a 3 limitations&nbsp;:
+                <ul class="mdf-list">
+                  <li>
+                    Il n'est pas systématiquement compris par les technologies
+                    d'assistance
+                  </li>
+                  <li>
+                    Il disparait quand on commence à taper dans le champ. Par
+                    exemple arriver sur un formulaire pré-rempli ne nous permet
+                    pas de connaitre le rôle des champs
+                  </li>
+                  <li>
+                    Il a souvent un contraste trop faible avec l'arrière-plan
+                    qui le rend illisible, ou un contraste trop proche du corps
+                    de texte qui le confond avec du texte qui aurait été entré
+                    dans le champ
+                  </li>
+                </ul>
+              </div>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Absence d'étiquette textuelle</h4>
+                <p>
+                  En pratique il faut toujours avoir une étiquette textuelle
+                  visible. Cependant il existe des exceptions dans les cas où le
+                  rôle du champ est extrêmement clair pour les
+                  utilisateur·rices.
+                </p>
+                <p>
+                  Par exemple pour un champ de texte recherche portant une icône
+                  de loupe (celle-ci ayant pour nom accessible "Rechercher"),
+                  alors on comprend (visuellement et via les technologies
+                  d'assistance) que c'est un champ de recherche.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 16 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}16{{/inline}} {{#*inline
+              "title"}}Les champs de formulaire obligatoires sont marqués comme
+              obligatoires visuellement et techniquement{{/inline}} {{#* inline
+              "rules"}}
+              <ul class="references">
                 <li>
-                  soit une indication textuelle "obligatoire"/"requis" accolée
-                  au nom du champ
-                </li>
-                <li>
-                  soit un symbole (souvent l'astérisque "*") accolé au nom du
-                  champ, avec sur la même page l'explication de la signification
-                  du symbole (Par exemple le texte suivant en début de
-                  formulaire&nbsp;: "Tous les champs suivis d'un '*' sont
-                  obligatoires")
-                </li>
-              </ul>
-            </div>
-            <p>
-              On peut préférer ajouter la précision en début de formulaire "Tous
-              les champs sont obligatoires", et accoler la mention "optionnel"
-              aux étiquettes des champs non-obligatoires.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}} {{/inline}}{{#* inline
-            "displayGoFurther"}}none{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 17 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}17{{/inline}} {{#*inline
-            "title"}}Les champs de formulaire qui attendent un format spécifique
-            l'expliquent dans un texte lié au champ techniquement et
-            visuellement{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
-                  class="mdf-badge"
-                  >RGAA #11.10</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Certains champs de formulaire attendent un format spécifique pour
-              que le formulaire soit valide. Quand c'est le cas il est important
-              de le faire savoir aux utilisateur·rices en amont. Par exemple, un
-              champ de date doit préciser s'il s'agit d'une date en "JJ/MM/AAAA"
-              ou d'un autre format.
-            </p>
-            <div>
-              Attention, le <i class="mdf-italic">placeholder</i> des inputs ne
-              fait pas office de format car il a 3 limitations&nbsp;:
-              <ul class="mdf-list">
-                <li>
-                  Il n'est pas systématiquement compris par les technologies
-                  d'assistance
-                </li>
-                <li>
-                  Il disparait quand on commence à taper dans le champ. Par
-                  exemple après avoir commencé à taper l'utilisateur·rice a
-                  peut-être oublié le format complet attendu
-                </li>
-                <li>
-                  Il a souvent un contraste trop faible avec l'arrière-plan qui
-                  le rend illisible, ou un contraste trop proche du corps de
-                  texte qui le confond avec du texte qui aurait été entré dans
-                  le champ
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
+                    class="mdf-badge"
+                    >RGAA #11.10</a
+                  >
                 </li>
               </ul>
-            </div>
-            {{/inline}} {{#*inline "howToCheck"}}
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Pour aider au remplissage des formulaires, il faut indiquer
+                clairement quels champs sont obligatoires.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                <a href="#screenreaders" class="mdf-link">Au lecteur d'écran</a
+                >, lorsqu'on atteint le champ obligatoire, la mention
+                "obligatoire" doit être restituée après l'annonce de l'étiquette
+                du champ. C'est le cas automatiquement quand le champ porte
+                l'attribut <code class="mdf-code-inline">required</code> ou
+                <code class="mdf-code-inline">aria-required="true"</code>.
+              </p>
+              <div>
+                Visuellement on doit voir sur les champs obligatoires&nbsp;:
+                <ul class="mdf-list">
+                  <li>
+                    soit une indication textuelle "obligatoire"/"requis" accolée
+                    au nom du champ
+                  </li>
+                  <li>
+                    soit un symbole (souvent l'astérisque "*") accolé au nom du
+                    champ, avec sur la même page l'explication de la
+                    signification du symbole (Par exemple le texte suivant en
+                    début de formulaire&nbsp;: "Tous les champs suivis d'un '*'
+                    sont obligatoires")
+                  </li>
+                </ul>
+              </div>
+              <p>
+                On peut préférer ajouter la précision en début de formulaire
+                "Tous les champs sont obligatoires", et accoler la mention
+                "optionnel" aux étiquettes des champs non-obligatoires.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}} {{/inline}}{{#* inline
+              "displayGoFurther"}}none{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 17 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}17{{/inline}} {{#*inline
+              "title"}}Les champs de formulaire qui attendent un format
+              spécifique l'expliquent dans un texte lié au champ techniquement
+              et visuellement{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#11.10"
+                    class="mdf-badge"
+                    >RGAA #11.10</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Certains champs de formulaire attendent un format spécifique
+                pour que le formulaire soit valide. Quand c'est le cas il est
+                important de le faire savoir aux utilisateur·rices en amont. Par
+                exemple, un champ de date doit préciser s'il s'agit d'une date
+                en "JJ/MM/AAAA" ou d'un autre format.
+              </p>
+              <div>
+                Attention, le <i class="mdf-italic">placeholder</i> des inputs
+                ne fait pas office de format car il a 3 limitations&nbsp;:
+                <ul class="mdf-list">
+                  <li>
+                    Il n'est pas systématiquement compris par les technologies
+                    d'assistance
+                  </li>
+                  <li>
+                    Il disparait quand on commence à taper dans le champ. Par
+                    exemple après avoir commencé à taper l'utilisateur·rice a
+                    peut-être oublié le format complet attendu
+                  </li>
+                  <li>
+                    Il a souvent un contraste trop faible avec l'arrière-plan
+                    qui le rend illisible, ou un contraste trop proche du corps
+                    de texte qui le confond avec du texte qui aurait été entré
+                    dans le champ
+                  </li>
+                </ul>
+              </div>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Visuellement le format doit être identifiable comme étant lié au
+                champ qu'il concerne.
+              </p>
+              <p>
+                Si le format attendu n'est pas directement inclus dans
+                l'étiquette du champ, il faut vérifier
+                <a href="#screenreaders" class="mdf-link"
+                  >avec un lecteur d'écran</a
+                >
+                que le format est restitué lorsque le champ est atteint. Par
+                défaut, lorsque l'utilisateur·rice soumet un formulaire
+                invalide, le navigateur repositionne immédiatement le focus dans
+                le premier champ en erreur. Un·e utilisateur·rice peut donc être
+                en
+                <i class="mdf-italic">focus</i> dans le champ sans avoir pu
+                consulter le contexte immédiat de celui-ci (indication du
+                format). C'est pourquoi il faut vérifier que lors du
+                <i class="mdf-italic">focus</i> du champ le format est restitué.
+              </p>
+              <p>
+                Il faut que le format soit accessible avant d'avoir commis la
+                première erreur.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Exemples de remplissage</h4>
+                <p>
+                  Parfois les champs sont agrémentés d'exemples de remplissage.
+                  Par exemple un champ "Nom" peut être précédé du texte "Raphaël
+                  Durand". Ces exemples font souvent office d'explication du
+                  format, ils doivent donc être traités de la même manière. En
+                  particulier, ils ne doivent pas être intégrés au
+                  <i class="mdf-italic">placeholder</i>.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+            <!-- RULE 18 -->
+            <li>
+              {{#> checkbox}} {{#*inline "id"}}18{{/inline}} {{#*inline
+              "title"}}Les images, icônes et emoji ont des alternatives
+              pertinentes{{/inline}} {{#* inline "rules"}}
+              <ul class="references">
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1"
+                    class="mdf-badge"
+                    >RGAA #1.1</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.2"
+                    class="mdf-badge"
+                    >RGAA #1.2</a
+                  >
+                </li>
+              </ul>
+              {{/inline}} {{#*inline "whyRule"}}
+              <p>
+                Les éléments picturaux qui sont porteurs d'information doivent
+                être accessibles à tous les utilisateur·rices de la même
+                manière, même aux personnes utilisatrices de technologies
+                d'assistance.
+              </p>
+              <p>
+                Les éléments picturaux uniquement décoratifs doivent être
+                paramétrés pour être ignorés par les technologies d'assistance
+                pour éviter d'interférer avec la restitution.
+              </p>
+              {{/inline}} {{#*inline "howToCheck"}}
+              <p>
+                Parcourir les images, icônes et emoji au
+                <a href="#screenreaders" class="mdf-link">lecteur d'écran</a>.
+                S'ils sont porteurs d'information, leur description doit être
+                restituée. S'ils sont décoratifs, ils ne doivent pas être
+                annoncés du tout (même la restitution par défaut des images par
+                les lecteurs d'écran "Image" ne doit pas être annoncée).
+              </p>
+              <p>
+                Il faut aussi vérifier que l'alternative est pertinente. Elle
+                doit décrire le contenu visuel en restant simple, pour permettre
+                aux utilisateur·rices de lecteurs d'écran d'opérer le site comme
+                les autres utilisiateur·ices.
+              </p>
+              {{/inline}}{{#*inline "goFurther"}}
+              <div class="section">
+                <h4 class="mdf-title5">Emoji</h4>
+                <p>
+                  Les lecteurs d'écran attribuent automatiquement un texte
+                  alternatif aux emoji qui risque de rendre le texte dans lequel
+                  ils sont inclus difficile à comprendre. Il vaut souvent mieux
+                  les exclure de la restitution ou remplacer leur texte
+                  alternatif.
+                </p>
+              </div>
+              {{/inline}}{{#* inline
+              "displayGoFurther"}}block{{/inline}}{{/checkbox}}
+            </li>
+          </ul>
+        </div>
+        <div class="annex" id="screenreaders">
+          <div class="mdf-block">
+            <h2 class="mdf-title3">Tester au lecteur d'écran</h2>
             <p>
-              Visuellement le format doit être identifiable comme étant lié au
-              champ qu'il concerne.
-            </p>
-            <p>
-              Si le format attendu n'est pas directement inclus dans l'étiquette
-              du champ, il faut vérifier
-              <a href="#screenreaders" class="mdf-link"
-                >avec un lecteur d'écran</a
+              Les lecteurs d'écran les plus utilisés sont
+              <a
+                href="https://support.freedomscientific.com/Downloads/JAWS"
+                class="mdf-link"
+                >JAWS (pour Windows)</a
               >
-              que le format est restitué lorsque le champ est atteint. Par
-              défaut, lorsque l'utilisateur·rice soumet un formulaire invalide,
-              le navigateur repositionne immédiatement le focus dans le premier
-              champ en erreur. Un·e utilisateur·rice peut donc être en
-              <i class="mdf-italic">focus</i> dans le champ sans avoir pu
-              consulter le contexte immédiat de celui-ci (indication du format).
-              C'est pourquoi il faut vérifier que lors du
-              <i class="mdf-italic">focus</i> du champ le format est restitué.
+              <a href="https://www.nvaccess.org/download/" class="mdf-link"
+                >NVDA (pour Windows)</a
+              >,
+              <a
+                href="https://support.apple.com/fr-fr/guide/voiceover/welcome/mac"
+                class="mdf-link"
+                >VoiceOver (pour macOS)</a
+              >
+              et
+              <a
+                href="https://webaim.org/projects/screenreadersurvey10/#primary"
+                class="mdf-link"
+                >Narrator (natif à Windows 11)</a
+              >. A eux quatre, ils couvrent 90% des usages de lecteurs d'écran
+              sur
+              <i class="mdf-italic">desktop</i>
+              <a
+                href="https://webaim.org/projects/screenreadersurvey10/#primary"
+                class="mdf-link"
+                >relevés par WebAIM en 2023</a
+              >. Pour les utilisateur·rices d'appareils mobiles, on peut noter
+              <a
+                href="https://support.apple.com/fr-fr/guide/iphone/iph3e2e415f/ios"
+                class="mdf-link"
+                >VoiceOver (pour iOS)</a
+              >
+              et
+              <a
+                href="https://support.google.com/accessibility/android/answer/6283677?hl=en"
+                class="mdf-link"
+                >Talkback (pour Android)</a
+              >
             </p>
-            <p>
-              Il faut que le format soit accessible avant d'avoir commis la
-              première erreur.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Exemples de remplissage</h4>
-              <p>
-                Parfois les champs sont agrémentés d'exemples de remplissage.
-                Par exemple un champ "Nom" peut être précédé du texte "Raphaël
-                Durand". Ces exemples font souvent office d'explication du
-                format, ils doivent donc être traités de la même manière. En
-                particulier, ils ne doivent pas être intégrés au
-                <i class="mdf-italic">placeholder</i>.
-              </p>
+            <div>
+              Les lecteurs d'écran ne se comportent pas de la même manière sur
+              tous les navigateurs. Chaque navigateur construit
+              <a
+                href="https://developer.mozilla.org/fr/docs/Glossary/Accessibility_tree"
+                class="mdf-link"
+                >l'arbre d'accessibilité</a
+              >
+              des pages web de manière différente. La restitution des lecteurs
+              d'écran peut donc varier d'un navigateur à l'autre. C'est pourquoi
+              il faut tester les interfaces avec les combinaisons lecteur
+              d'écran & navigateur les plus utilisées. En 2023, pour les
+              utilisateur·rices
+              <i class="mdf-italic">desktop</i>, les combinaisons les plus
+              courrantes étaient&nbsp;:
+              <table class="mdf-table" role="table">
+                <thead>
+                  <tr>
+                    <th class="mdf-th">Lecteur d'écran & navigateur</th>
+                    <th class="mdf-th">% d'utilisation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mdf-td">JAWS & Google Chrome</td>
+                    <td class="mdf-td">24,7%</td>
+                  </tr>
+                  <tr>
+                    <td class="mdf-td">NVDA & Google Chrome</td>
+                    <td class="mdf-td">24,7%</td>
+                  </tr>
+                  <tr>
+                    <td class="mdf-td">JAWS & Edge</td>
+                    <td class="mdf-td">11,4%</td>
+                  </tr>
+                  <tr>
+                    <td class="mdf-td">NVDA & Firefox</td>
+                    <td class="mdf-td">10,0%</td>
+                  </tr>
+                  <tr>
+                    <td class="mdf-td">VoiceOver & Safari</td>
+                    <td class="mdf-td">7.0%</td>
+                  </tr>
+                </tbody>
+              </table>
+              consultez
+              <a
+                href="https://webaim.org/projects/screenreadersurvey10/#browsercombos"
+                class="mdf-link"
+                >la liste complète des combinaisons établie par WebAIM</a
+              >. En pratique, les navigateurs basés sur chromium (Google Chrome,
+              Edge, Opera, Arc, Brave) se comportent de la même manière
+              vis-à-vis des lecteurs d'écran.
             </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-          <!-- RULE 18 -->
-          <li>
-            {{#> checkbox}} {{#*inline "id"}}18{{/inline}} {{#*inline
-            "title"}}Les images, icônes et emoji ont des alternatives
-            pertinentes{{/inline}} {{#* inline "rules"}}
-            <ul class="references">
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.1"
-                  class="mdf-badge"
-                  >RGAA #1.1</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://accessibilite.numerique.gouv.fr/methode/criteres-et-tests/#1.2"
-                  class="mdf-badge"
-                  >RGAA #1.2</a
-                >
-              </li>
-            </ul>
-            {{/inline}} {{#*inline "whyRule"}}
-            <p>
-              Les éléments picturaux qui sont porteurs d'information doivent
-              être accessibles à tous les utilisateur·rices de la même manière,
-              même aux personnes utilisatrices de technologies d'assistance.
-            </p>
-            <p>
-              Les éléments picturaux uniquement décoratifs doivent être
-              paramétrés pour être ignorés par les technologies d'assistance
-              pour éviter d'interférer avec la restitution.
-            </p>
-            {{/inline}} {{#*inline "howToCheck"}}
-            <p>
-              Parcourir les images, icônes et emoji au
-              <a href="#screenreaders" class="mdf-link">lecteur d'écran</a>.
-              S'ils sont porteurs d'information, leur description doit être
-              restituée. S'ils sont décoratifs, ils ne doivent pas être annoncés
-              du tout (même la restitution par défaut des images par les
-              lecteurs d'écran "Image" ne doit pas être annoncée).
-            </p>
-            <p>
-              Il faut aussi vérifier que l'alternative est pertinente. Elle doit
-              décrire le contenu visuel en restant simple, pour permettre aux
-              utilisateur·rices de lecteurs d'écran d'opérer le site comme les
-              autres utilisiateur·ices.
-            </p>
-            {{/inline}}{{#*inline "goFurther"}}
-            <div class="section">
-              <h4 class="mdf-title5">Emoji</h4>
-              <p>
-                Les lecteurs d'écran attribuent automatiquement un texte
-                alternatif aux emoji qui risque de rendre le texte dans lequel
-                ils sont inclus difficile à comprendre. Il vaut souvent mieux
-                les exclure de la restitution ou remplacer leur texte
-                alternatif.
-              </p>
-            </div>
-            {{/inline}}{{#* inline
-            "displayGoFurther"}}block{{/inline}}{{/checkbox}}
-          </li>
-        </ul>
-      </div>
-      <div class="annex" id="screenreaders">
-        <div class="mdf-block">
-          <h2 class="mdf-title3">Tester au lecteur d'écran</h2>
-          <p>
-            Les lecteurs d'écran les plus utilisés sont
-            <a
-              href="https://support.freedomscientific.com/Downloads/JAWS"
-              class="mdf-link"
-              >JAWS (pour Windows)</a
-            >
-            <a href="https://www.nvaccess.org/download/" class="mdf-link"
-              >NVDA (pour Windows)</a
-            >,
-            <a
-              href="https://support.apple.com/fr-fr/guide/voiceover/welcome/mac"
-              class="mdf-link"
-              >VoiceOver (pour macOS)</a
-            >
-            et
-            <a
-              href="https://webaim.org/projects/screenreadersurvey10/#primary"
-              class="mdf-link"
-              >Narrator (natif à Windows 11)</a
-            >. A eux quatre, ils couvrent 90% des usages de lecteurs d'écran sur
-            <i class="mdf-italic">desktop</i>
-            <a
-              href="https://webaim.org/projects/screenreadersurvey10/#primary"
-              class="mdf-link"
-              >relevés par WebAIM en 2023</a
-            >. Pour les utilisateur·rices d'appareils mobiles, on peut noter
-            <a
-              href="https://support.apple.com/fr-fr/guide/iphone/iph3e2e415f/ios"
-              class="mdf-link"
-              >VoiceOver (pour iOS)</a
-            >
-            et
-            <a
-              href="https://support.google.com/accessibility/android/answer/6283677?hl=en"
-              class="mdf-link"
-              >Talkback (pour Android)</a
-            >
-          </p>
-          <div>
-            Les lecteurs d'écran ne se comportent pas de la même manière sur
-            tous les navigateurs. Chaque navigateur construit
-            <a
-              href="https://developer.mozilla.org/fr/docs/Glossary/Accessibility_tree"
-              class="mdf-link"
-              >l'arbre d'accessibilité</a
-            >
-            des pages web de manière différente. La restitution des lecteurs
-            d'écran peut donc varier d'un navigateur à l'autre. C'est pourquoi
-            il faut tester les interfaces avec les combinaisons lecteur d'écran
-            & navigateur les plus utilisées. En 2023, pour les utilisateur·rices
-            <i class="mdf-italic">desktop</i>, les combinaisons les plus
-            courrantes étaient&nbsp;:
-            <table class="mdf-table" role="table">
-              <thead>
-                <tr>
-                  <th class="mdf-th">Lecteur d'écran & navigateur</th>
-                  <th class="mdf-th">% d'utilisation</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="mdf-td">JAWS & Google Chrome</td>
-                  <td class="mdf-td">24,7%</td>
-                </tr>
-                <tr>
-                  <td class="mdf-td">NVDA & Google Chrome</td>
-                  <td class="mdf-td">24,7%</td>
-                </tr>
-                <tr>
-                  <td class="mdf-td">JAWS & Edge</td>
-                  <td class="mdf-td">11,4%</td>
-                </tr>
-                <tr>
-                  <td class="mdf-td">NVDA & Firefox</td>
-                  <td class="mdf-td">10,0%</td>
-                </tr>
-                <tr>
-                  <td class="mdf-td">VoiceOver & Safari</td>
-                  <td class="mdf-td">7.0%</td>
-                </tr>
-              </tbody>
-            </table>
-            consultez
-            <a
-              href="https://webaim.org/projects/screenreadersurvey10/#browsercombos"
-              class="mdf-link"
-              >la liste complète des combinaisons établie par WebAIM</a
-            >. En pratique, les navigateurs basés sur chromium (Google Chrome,
-            Edge, Opera, Arc, Brave) se comportent de la même manière vis-à-vis
-            des lecteurs d'écran.
           </div>
         </div>
       </div>
