@@ -15,7 +15,6 @@ jobs:
 
       - name: Build Project
         run: |
-          rm -rf dist
           npm install
           npm run build
 
