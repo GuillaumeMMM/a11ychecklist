@@ -629,9 +629,6 @@ a.mdf-badge {
 }
 
 @media (max-width: 30rem) {
-    .header {
-        min-height: 20vh;
-    }
 
     .header .title {
         font-size: 1.5rem;
